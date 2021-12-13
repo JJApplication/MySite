@@ -1,0 +1,23 @@
+{% extends './base/mod_base1.html' %}
+{% block title %}status | 状态信息{% endblock title %}
+
+{% block style %}
+    <style>
+    .post-body p{margin-bottom: 10px}
+    </style>
+{% endblock %}
+{% block body %}
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">
+              <p style="font-size: 120%">站点信息</p>
+          </h2>
+      </header>
+
+    <div class="post-body" itemprop="articleBody">
+        <p class="status">状态&emsp;</p><p class="bar">正常</p><br>
+        <p class="status">运行&emsp;</p><p class="days">{{ days }}</p><br>
+        <p class="status">分析&emsp;</p><a href="/analysis">Analysis</a><br>
+        <p class="status">站点地图&emsp;</p><a href="/sitemap">Sitemap</a><br>
+        <a href="/" class="statusback">🍖</a><p style="display: inline-block;margin-left: 20px"> ©2017-{{ year }} Landers</p>
+    </div>
+{% endblock body %}

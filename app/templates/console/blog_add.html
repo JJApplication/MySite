@@ -1,0 +1,116 @@
+{% extends "console/base.html" %}
+
+{% block style %}
+ <style>
+ #panel{
+     margin-top: 30px;
+     box-shadow: 0 0 10px #999999;
+     padding: 20px;
+     border-radius: 20px;
+ }
+ input{
+     font-size: 20px;
+     line-height: 1.5;
+     padding: 4px;
+     width: calc(100% - 150px);
+     outline: none;
+     border-radius: 10px;
+     border: 2px solid #888888;
+
+ }
+ textarea{
+     width: calc(100% - 150px);
+     border-radius: 10px;
+     padding: 4px;
+     border: 2px solid #888888;
+     outline: none;
+ }
+ #panel span{display: inline-block;width: 120px;}
+ .bt{
+     border: none;
+     display: block;
+     background-color: #4e8fff;
+     border-radius: 30px;
+     padding: 10px 40px;
+     color: white;
+     font-size: 26px;
+     margin: 40px auto 0;
+     cursor: pointer;
+     outline: none;
+     font-family:  'PT Sans Narrow', Helvetica, Arial, sans-serif;
+ }
+ a{
+     border: 2px solid #444444;
+     border-radius: 12px;
+     padding: 4px 10px;
+     margin-bottom: 30px;
+     display: inline-block;
+     font-size: 18px;
+     text-decoration: none;
+     color: #444444;
+
+ }
+ @media (max-width: 500px) {
+     #panel{padding: 20px 10px}
+     #panel span{width: 80px;font-size: 18px}
+     input{width: calc(100% - 100px)}
+     textarea{width: calc(100% - 100px)}
+     .bt{font-size: 20px}
+ }
+</style>
+
+{% endblock%}
+{% block body %}
+    <div id="panel" class="animated slideInDown">
+        <a href="/console">⇠  BACK</a>
+        <p style="margin-bottom: 20px">
+            <span>POST Title</span><input type="text" autocomplete="off" v-model="title" title="标题"><br>
+        </p>
+        <p style="margin-bottom: 20px">
+            <span>POST Url</span><input type="text" autocomplete="off" v-model="url" title="url地址和md文件保持一致"><br>
+        </p>
+        <p style="margin-bottom: 20px">
+            <span>POST Content</span><textarea rows="6" v-model="content" title="摘要文本支持md"></textarea>
+        </p>
+        <p>
+            <span>X CODE</span><input type="text" autocomplete="off" style="color: orangered" v-model="code"><br>
+        </p>
+    <button class="bt" @click="add">ADD</button>
+    </div>
+
+{% block script %}
+    <!--vue-->
+    <script>
+        new Vue({
+            el: "#app",
+            data: function () {
+                return{
+                    title: '',
+                    url: '',
+                    content: '',
+                    code: ''
+                }
+            },
+            methods: {
+                add(){
+                    let data = {
+                        "title": this.title,
+                        "url": this.url,
+                        "content": this.content,
+                        "code": this.code
+                    };
+                    axios.post('/api/blog_add',data).then(res=>{
+                        if(res.data === "ok"){
+                            alert("ok");
+                        }else{
+                            alert("wrong");
+                        }
+                    }).catch(()=>{
+                        alert("wrong");
+                    });
+                }
+            }
+    });
+    </script>
+{% endblock %}
+{% endblock %}

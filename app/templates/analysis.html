@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analysis</title>
+    <meta http-equiv=”X-UA-Compatible” content=”IE=edge”>
+    <meta name="theme-color" content="#222222">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" content="notranslate" />
+    <meta name="description" content="landers的主页,站点分析页面,分析综合数据显示">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name=”x5-page-mode” content="app">
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link rel="apple-touch-icon" href="/static/res/apple-icon.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/res/apple-icon120.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/res/apple-icon152.png"/>
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+</head>
+<style>
+    *{margin: 0;padding: 0;user-select: none}
+    html{text-align: center;font-family: 'Source Han Sans SC','Source Han Sans SC Medium','Segoe UI','Helvetica','Source Code Pro','Fira Code','Open Sans','Microsoft YaHei','Droid Sans','Consolas',sans-serif}
+    i{font-style: normal}
+    h1{background-color: #222222;padding: 15px 6px;color: white}
+    .analysis{
+        max-width: 720px;
+        margin: 0 auto;
+        padding-bottom: 20px;
+    }
+    h1 span{
+        background-color: #2176ff;
+        font-size: 12px;
+        border-radius: 6px;
+        padding: 4px 8px;
+        margin-left: 15px;
+    }
+    .blist{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .blist .bandge{
+        width: 200px;
+        cursor: pointer;
+        font-size: 0;
+        margin-bottom: 20px;
+    }
+    .bandge .name{
+        background-color: #222222;
+        color: white;
+        font-size: 12px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        padding: 6px 4px;
+        display: inline-block;
+        width: 95px;
+
+    }
+    .bandge .data{
+        background-color: #e0e0e0;
+        color: #1c1f2b;
+        display: inline-block;
+        width: 40px;
+        font-size: 12px;
+        padding: 6px 4px;
+        border-bottom-right-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    strong{font-size: 26px}
+    @media (max-width: 500px) {
+        h1{font-size: 28px;transition: all .3s ease}
+        .blist .bandge{width: 120px;margin-bottom: 10px;transition: all .3s ease}
+        .bandge .name{width: 75px;padding: 6px 2px}
+        .bandge .data{width: 35px;padding: 6px 2px}
+    }
+    @media (max-width: 368px) {
+        .blist .bandge{width: 120px;margin-bottom: 10px;transition: all .3s ease}
+        .bandge .name{font-size: 10px;width: 70px;padding: 6px 2px}
+        .bandge .data{font-size: 10px;width: 40px;padding: 6px 2px}
+    }
+</style>
+<body>
+    <div class="analysis">
+        <h1 style="margin-bottom: 20px">Analysis Page<span>Renj.io</span></h1>
+        <div>
+            <p style="margin-bottom: 20px"><strong>overview</strong></p>
+            <div class="blist">
+                {% for i in overview %}
+                <label class="bandge animated fadeInDown" style="animation-duration: 1s">
+                    <i class="name">{{ i.name }}</i>
+                    <span class="data">{{ i.data }}</span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            <p style="margin-bottom: 20px;margin-top: 20px"><strong>crawler records</strong></p>
+            <div class="blist">
+                {% for i in crawlers %}
+                <label class="bandge animated fadeInDown" style="animation-duration: 1.3s;animation-delay: .5s">
+                    <i class="name">{{ i.view }}</i>
+                    <span class="data">{{ i.count }}</span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            <p style="margin-bottom: 20px;margin-top: 20px"><strong>github social</strong></p>
+            <div class="blist animated fadeInDown" style="animation-duration: 1.5s;animation-delay: .8s">
+                <label class="bandge">
+                    <i class="name">followers</i>
+                    <span class="data" id="followers">0</span>
+                </label>
+                <label class="bandge">
+                    <i class="name">following</i>
+                    <span class="data" id="following">0</span>
+                </label>
+                <label class="bandge">
+                    <i class="name">repos</i>
+                    <span class="data" id="repos">0</span>
+                </label>
+            </div>
+        </div>
+        <a href="/" style="color: #2176ff;margin-top: 40px;display: block;font-size: 18px">back to renj.io</a>
+    </div>
+
+<script>
+    function get_github() {
+        axios.get('https://api.github.com/users/landers1037').then(res=>{
+            let data = res.data;
+            parse(data);
+        }).catch((e)=>{
+            console.log(e);
+            parse('');
+        });
+    }
+    function parse(data){
+        let followers = document.getElementById("followers");
+        let following = document.getElementById("following");
+        let repos = document.getElementById("repos");
+        followers.innerText = data.followers?data.followers:'fail';
+        following.innerText = data.following?data.following:'fail';
+        repos.innerText = data.public_repos?data.public_repos:'fail';
+    }
+    get_github();
+</script>
+</body>
+</html>

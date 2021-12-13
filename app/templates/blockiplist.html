@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="theme-color" content="#495a80">
+    <title>Blocked IP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/res/favicon.png" rel="icon">
+</head>
+<style>
+    .main{
+        text-align: center;
+    }
+    .main pre{
+        width: 640px;
+        margin: 0 auto;
+        padding: 10px;
+        max-height: 600px;
+        overflow-y: auto;
+        background-color: #fe4c40;
+        word-wrap: break-spaces;
+        white-space: pre-line;
+        border-radius: 4px;
+    }
+    .main pre code{
+        color: yellow;
+        font-size: 14px;
+        padding: 0;
+    }
+    @media (max-width: 520px) {
+        .main pre{
+            width: 90%;
+        }
+    }
+    ::-webkit-scrollbar{width: 12px;height: 8px}
+    ::-webkit-scrollbar-thumb{
+        background-color: yellow;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track-piece{
+        background-color: #aeaeae;
+        -webkit-border-radius: 0;
+    }
+</style>
+<body>
+<div class="main">
+    <h1 style="margin: 0">攻击本站点的IP</h1>
+    <p style="color: #65f765;margin-top: 4px">Latest 200 attacks</p>
+    <pre>
+        <code>{% for item in list %}
+            <span>{{ item }}</span>
+            {% endfor %}</code>
+    </pre>
+
+</div>
+</body>
+</html>

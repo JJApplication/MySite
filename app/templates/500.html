@@ -1,0 +1,74 @@
+﻿{#404请求页面#}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="theme-color" content="#495a80">
+    <title>500</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    body{
+        background: #eeeeee;
+        font-family: 'Fira Sans', sans-serif;
+        text-align: center;
+    }
+    .text-center{
+        text-align: center;
+    }
+    .text-muted {
+        color: #6c757d!important;
+    }
+    .head1{
+        font-size: 80px;
+        margin-top: 50px;
+        font-weight: 600;
+    }
+    .head2{
+        font-size: 1.1rem;
+        font-family: 'Fira Sans', sans-serif;
+    }
+    .txt1{
+        margin-top: 40px;
+    }
+    img{
+        max-width: 100%;
+    }
+    div{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    a{
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 8px 10px 8px 10px;
+        color: #6c757d;
+        border: 1px solid #6c757d;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    a:hover{
+        font-size: 1.05rem;
+        transition: all 0.3s ease;
+        color: white;
+        background-color: #222222;
+        text-decoration: none;
+    }
+</style>
+<body>
+
+    <h1 class="text-center text-muted head1">500</h1>
+    <p class="head2 text-center text-muted">Error</p>
+    <p class="txt1 text-center text-muted">服务器内部错误
+    <br>你请求的文件消失了</p>
+    <div class="text-center">
+        <img class="text-center" src="/static/res/error.png" width="60" height="60">
+    </div>
+    <a href="/">返回主页</a>
+</body>
+</html>

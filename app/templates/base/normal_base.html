@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{% block title %}{{ title|default }}{% endblock title %}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="description" content="廖仁杰的个人主页,这里是我的个人博客页面,这里是我记录生活,总结经验的地方">
+    <meta name="keywords" content="廖仁杰,Landers,renj.io,博客,flask,landers1037">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="x5-page-mode" content="app">
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link rel="apple-touch-icon" href="/static/res/apple-icon.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/res/apple-icon120.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/res/apple-icon152.png"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.0/dist/css/bootstrap.min.css" integrity="sha256-JnRsKkBFuGrwCYmwj8aV3brs5M16CrcAkg7Z+hkObZ8=" crossorigin="anonymous">
+    {% block head %}
+
+    {% endblock head %}
+</head>
+<style>
+    ::-webkit-scrollbar{
+        width: 10px;
+        height: 10px;
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: #bab4bd;
+        height: 50px;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+    }
+    @media (max-width: 500px) {
+        ::-webkit-scrollbar{
+            height: 4px;
+        }
+    }
+</style>
+    {% block style %}
+
+    {% endblock style %}
+<body>
+{% block body %}
+{#    正文#}
+    {% block script %}
+{#        脚本#}
+
+    {% endblock script %}
+{% endblock body %}
+</body>
+</html>

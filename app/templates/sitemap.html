@@ -1,0 +1,61 @@
+{% extends './base/mod_base1.html' %}
+{% block title %}Sitemap{% endblock title %}
+
+{% block style %}
+    <style>
+    .post-body p{margin-bottom: 10px}
+    .post-body h3{margin-bottom: 10px;font-size: 24px}
+    </style>
+{% endblock %}
+{% block body %}
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">
+              <p style="font-size: 120%">Sitemap</p>
+          </h2>
+      </header>
+
+    <div class="post-body" itemprop="articleBody">
+        <h3>Explore Here</h3>
+        <a href="/about">Who am I?</a><br>
+        <a href="/blog">My Blog</a><br>
+        <a href="/proj">My Projects</a><br>
+        <a href="/album">My Albums and my Vlogs</a><br>
+        <a href="/bulletin">Site Bulletin</a>
+        <p style="margin-bottom: 0;font-size: 20px">What I type.</p>
+        <a href="/thoughts">Thoughts</a><br>
+        <a href="/go">Problems</a>
+        <h3>Site Info</h3>
+        <a href="/status">Status</a><br>
+        <a href="/analysis">Analysis</a><br>
+        <a href="/copyright">Statement</a><br>
+        <a href="/public">Public Page</a><br>
+        <h3>Service</h3>
+        <a href="/mes">Message</a><br>
+        <a href="/reply">Reply Bot</a><br>
+        <a href="/ssr">SSR Panel</a><br>
+        <a href="/forest">Forest</a><br>
+        <h3>APIs</h3>
+        <a href="http://cloud.mgek.cc">Mgek API</a><br>
+        <h3>Links</h3>
+        <a href="https://xk-wang.github.io" target="_blank">大哥的博客</a><br>
+        <a href="http://me.renj.io" target="_blank">Resume</a><br>
+        <a href="https://blog.renj.io" target="_blank">Vue Blog</a><br>
+        <a href="#">React Blog</a><br>
+        <a href="http://mgek.cc" target="_blank">Mgek</a><br>
+        <a href="http://file.mgek.cc" target="_blank">Mgek File</a><br>
+        <a href="http://doc.mgek.cc" target="_blank">Mgek Docs</a><br>
+        <a href="http://app.renj.io" target="_blank">App Cloud</a><br>
+        <a href="http://jjgo.renj.io">JJ Go-Rest API</a><br>
+		<a href="http://api.renj.io">JJGo Alias</a><br>
+        <h3>Contact</h3>
+        <a href="mailto:liaorenj@gmail.com">liaorenj@gmail.com</a><br>
+        <a href="mailto:mail@renj.io">mail@renj.io</a><br>
+        <h3>Support</h3>
+        <a href="https://getbootstrap.com/">Bootstrap</a><br>
+        <a href="https://cn.vuejs.org/">Vue</a><br>
+        <a href="https://www.jsdelivr.com/">Jsdelivr</a><br>
+        <a href="https://fontawesome.com/">Font Awesome</a><br>
+        <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a><br>
+    </div>
+    <br>
+{% endblock body %}

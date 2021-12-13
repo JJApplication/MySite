@@ -1,0 +1,138 @@
+{% extends "console/base.html" %}
+
+{% block style %}
+ <style>
+ *{user-select: none}
+ #panel{
+     margin-top: 50px;
+     display: flex;
+     align-content: space-between;
+     align-items: flex-start;
+     justify-content: space-between;
+     flex-wrap: wrap;
+ }
+ #panel .card{
+    font-size: 22px;
+     width: calc(50% - 40px);
+     padding: 15px;
+     height: 180px;
+     border-radius: 20px;
+     box-shadow: 0 1px 5px #808080;
+     display: inline-block;
+     position: relative;
+     margin-bottom: 20px;
+ }
+ .card .intro{
+     margin-top: 20px;
+     font-size: 26px;
+ }
+ .card .bt{
+     border: none;
+     display: block;
+     position: absolute;
+     bottom: 15px;
+     left: 50%;
+     transform: translateX(-50%);
+     background-color: #4e8fff;
+     border-radius: 30px;
+     padding: 8px 40px;
+     color: white;
+     font-size: 26px;
+     cursor: pointer;
+     outline: none;
+     font-family:  'PT Sans Narrow', Helvetica, Arial, sans-serif;
+ }
+ .card p:first-child{
+     font-weight: bold;
+ }
+ @media (max-width: 500px) {
+     .card .bt{font-size: 22px;padding: 8px 40px;margin: 30px auto 0}
+ }
+</style>
+
+{% endblock%}
+{% block body %}
+    <div id="panel">
+        <div class="card animated slideInDown">
+            <p>Blog</p>
+            <p class="intro">Add new Post.</p>
+            <button class="bt" @click="go_b_add">Go</button>
+        </div>
+        <div class="card animated slideInDown">
+            <p>Blog</p>
+            <p class="intro">Update Post data.</p>
+            <button class="bt" @click="go_b_update">Go</button>
+        </div>
+        <div class="card animated slideInUp">
+            <p>Likes</p>
+            <p class="intro">Update Likes.</p>
+            <button class="bt" @click="go_like">Go</button>
+        </div>
+        <div class="card animated slideInUp">
+            <p>Message</p>
+            <p class="intro">Manage Messages.</p>
+            <button class="bt" @click="go_message">Go</button>
+        </div>
+        <div class="card animated slideInUp">
+            <p>Thoughts</p>
+            <p class="intro">Manage Thoughts.</p>
+            <button class="bt" @click="go_thoughts">Go</button>
+        </div>
+        <div class="card animated slideInUp">
+            <p>Problems</p>
+            <p class="intro">Manage Problemes.</p>
+            <button class="bt" @click="go_problems">Go</button>
+        </div>
+        <div class="card animated slideInUp">
+            <p>Album</p>
+            <p class="intro">Manage Photos.</p>
+            <button class="bt" @click="go_album">Go</button>
+        </div>
+        <div class="card animated slideInUp">
+            <p>Views</p>
+            <p class="intro">Checkout Views.</p>
+            <button class="bt" @click="go_views">Go</button>
+        </div>
+    </div>
+
+{% block script %}
+    <!--vue-->
+    <script>
+        new Vue({
+            el: "#app",
+            data: function () {
+                return{
+
+                }
+            },
+            methods: {
+                go_b_add(){
+                    window.location.href = '/console/blog_add'
+                },
+                go_b_update(){
+                    window.location.href = '/console/blog_update'
+                },
+                go_like(){
+                    window.location.href = '/console/like'
+                },
+                go_message(){
+                    window.location.href = '/console/message'
+                },
+                go_thoughts(){
+                    window.location.href = '/console/thoughts'
+                },
+                go_problems(){
+                    window.location.href = '/console/problems'
+                },
+                go_album(){
+                    window.location.href = '/console/album'
+                },
+                go_views(){
+                    window.location.href = '/console/views'
+                }
+
+            }
+    });
+    </script>
+{% endblock %}
+{% endblock %}

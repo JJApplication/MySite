@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="theme-color" content="crimson">
+    <meta name="msvalidate.01" content="true">
+
+    <link href="/static/res/favicon.png" rel="icon">
+    <link href="/static/css/font/lato.css" rel="stylesheet">
+    <link href="/static/css/font/bad.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.9/styles/atom-one-light.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="/static/css/mgekwiki.css">
+
+  <title>Doc | Landers</title>
+
+</head>
+
+<body>
+
+  <div>
+
+    <div id="box" class="custom-logo-site-title animated fadeInDown">
+      <a href="/" class="brand" rel="start">
+        <span class="site-title">Landers1037</span>
+      </a>
+    </div>
+        <h1 class="site-subtitle animated fadeInDown">河汉清且浅 相去复几许</h1>
+        <span class="top"><a href="/docs/"><p>Mgek</p></a></span>
+  </div>
+
+
+      <div class="main-inner">
+        <div class="content-wrap">
+
+          <div id="content" class="content">
+
+  <div class="post-block">
+
+      <div class="post-header">
+          <p class="post-title" itemprop="name headline"><span style="color: crimson">Mgekapp</span>文档</p>
+      </div>
+
+    <div class="post-body">
+
+<h1 style="text-align:center">Mgekapp是一个Arduino蓝牙开发板测试app</h1>
+<div style="text-align:center"><img width="324" height="494" src="/static/res/mgek/images/demo.jpg"></div>
+<p><br></p>
+<a href="http://landers1037.top/doc/arduino.html">帮助文档</a><br>
+<a href="https://github.com/Landers1037/arduinomusicLED">源码地址</a>
+<p><br></p>
+
+<h3>连接示例</h3>
+<p>使用bluno library提供的api连接Bluno beetle系列蓝牙开发板</p>
+<p>发送信号"o"表示开灯</p>
+<p>发送信号"c"表示开灯</p>
+<p>发送信号"pwm"表示呼吸灯</p>
+<p>发送信号"run"表示跑马灯</p>
+<p><br></p>
+<h3>引脚图</h3>
+<div style="text-align:center"><img width="254" height="210" src="/static/res/mgek/images/yinjiao.png"></div>
+<br>
+<h3>调用函数</h3>
+<pre><code class='language-java' lang='java'>package com.dfrobot.angelo.blunobasicdemo;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ScrollView;
+import android.widget.TextView;
+
+public class MainActivity  extends BlunoLibrary {
+	private Button buttonScan;
+	private Button open; //开关灯
+	private Button close;
+	private Button pwm; //呼吸
+	private Button run; //跑马灯
+	private Button buttonSerialSend;
+	private EditText serialSendText;
+	private TextView serialReceivedText;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+        onCreateProcess();														//onCreate Process by BlunoLibrary
+
+
+        serialBegin(115200);													//set the Uart Baudrate on BLE chip to 115200
+
+        serialReceivedText=(TextView) findViewById(R.id.textView4);	//initial the EditText of the received data
+//        serialSendText=(EditText) findViewById(R.id.serialSendText);			//initial the EditText of the sending data
+//
+//        buttonSerialSend = (Button) findViewById(R.id.buttonSerialSend);		//initial the button for sending the data
+//        buttonSerialSend.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//
+//				serialSend(serialSendText.getText().toString());				//send the data to the BLUNO
+//			}
+//		});
+
+        buttonScan = (Button) findViewById(R.id.buttonScan);					//initial the button for scanning the BLE device
+        buttonScan.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+				buttonScanOnClickProcess();										//Alert Dialog for selecting the BLE device
+			}
+		});
+		//添加监听发送
+		open = (Button) findViewById(R.id.buttonopen);
+		open.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				serialSend(&quot;o&quot;);									//Alert Dialog for selecting the BLE device
+			}
+		});
+		close = (Button) findViewById(R.id.buttonclose);
+		close.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				serialSend(&quot;c&quot;);									//Alert Dialog for selecting the BLE device
+			}
+		});
+		pwm = (Button) findViewById(R.id.buttonpwm);
+		pwm.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				serialSend(&quot;pwm&quot;);									//Alert Dialog for selecting the BLE device
+			}
+		});
+		run = (Button) findViewById(R.id.buttonrun);
+		run.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				serialSend(&quot;run&quot;);									//Alert Dialog for selecting the BLE device
+			}
+		});
+	}
+
+
+
+
+	protected void onResume(){
+		super.onResume();
+		System.out.println(&quot;BlUNOActivity onResume&quot;);
+		onResumeProcess();														//onResume Process by BlunoLibrary
+	}
+
+
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		onActivityResultProcess(requestCode, resultCode, data);					//onActivityResult Process by BlunoLibrary
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        onPauseProcess();														//onPause Process by BlunoLibrary
+    }
+
+	protected void onStop() {
+		super.onStop();
+		onStopProcess();														//onStop Process by BlunoLibrary
+	}
+
+	@Override
+    protected void onDestroy() {
+        super.onDestroy();
+        onDestroyProcess();														//onDestroy Process by BlunoLibrary
+    }
+
+	@Override
+	public void onConectionStateChange(connectionStateEnum theConnectionState) {//Once connection state changes, this function will be called
+		switch (theConnectionState) {											//Four connection state
+		case isConnected:
+			buttonScan.setText(&quot;已连接&quot;);
+			break;
+		case isConnecting:
+			buttonScan.setText(&quot;正在连接&quot;);
+			break;
+		case isToScan:
+			buttonScan.setText(&quot;扫描&quot;);
+			break;
+		case isScanning:
+			buttonScan.setText(&quot;扫描中&quot;);
+			break;
+		case isDisconnecting:
+			buttonScan.setText(&quot;isDisconnecting&quot;);
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void onSerialReceived(String theString) {							//Once connection data received, this function will be called
+		// TODO Auto-generated method stub
+		serialReceivedText.append(theString);							//append the text into the EditText
+		//The Serial data from the BLUNO may be sub-packaged, so using a buffer to hold the String is a good choice.
+		//((ScrollView)serialReceivedText.getParent()).fullScroll(View.FOCUS_DOWN);
+	}
+
+}
+</code></pre>
+<p><br></p>
+<h3>布局</h3>
+<pre><code class='language-xml' lang='xml'>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot;&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/textView&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:background=&quot;@android:color/darker_gray&quot;
+        android:clickable=&quot;false&quot;
+        android:fontFamily=&quot;sans-serif&quot;
+        android:text=&quot;Arduino app by Landers&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textSize=&quot;18sp&quot;
+        android:textStyle=&quot;bold&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/buttonScan&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;92dp&quot;
+        android:layout_gravity=&quot;center&quot;
+        android:width=&quot;250px&quot;
+        android:background=&quot;@drawable/shape&quot;
+        android:text=&quot;扫描&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textSize=&quot;30sp&quot;
+        android:textStyle=&quot;bold&quot;
+        tools:text=&quot;扫描&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/textView2&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;功能&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textColor=&quot;@android:color/holo_red_light&quot;
+        android:textSize=&quot;18sp&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/buttonopen&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;center&quot;
+        android:width=&quot;800px&quot;
+        android:alpha=&quot;90&quot;
+        android:layerType=&quot;none&quot;
+        android:text=&quot;开&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/buttonclose&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;center&quot;
+        android:width=&quot;800px&quot;
+        android:text=&quot;关&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/buttonpwm&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;center&quot;
+        android:width=&quot;800px&quot;
+        android:text=&quot;呼吸灯&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/buttonrun&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;center&quot;
+        android:width=&quot;800px&quot;
+        android:text=&quot;跑马灯&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/textView3&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;接收数据&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textColor=&quot;@android:color/holo_green_light&quot;
+        android:textSize=&quot;18sp&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/textView4&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;232dp&quot;
+        android:text=&quot;暂无接收数据&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+<p><br></p>
+<h3>自定义布局</h3>
+<pre><code class='language-xml' lang='xml'>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:shape=&quot;rectangle&quot;&gt;
+    &lt;solid android:color=&quot;#1E90FF&quot;/&gt;
+    &lt;corners android:radius=&quot;100dip&quot;/&gt;
+    &lt;padding
+        android:bottom=&quot;10dp&quot;
+        android:top=&quot;10dp&quot;
+        android:left=&quot;10dp&quot;
+        android:right=&quot;10dp&quot;/&gt;
+&lt;/shape&gt;
+</code></pre>
+<p><br></p>
+<h3>Bluno函数库</h3>
+<pre><code class='language-java' lang='java'>package com.dfrobot.angelo.blunobasicdemo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.os.Handler;
+import android.os.IBinder;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothManager;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public abstract  class BlunoLibrary  extends Activity{
+
+	private Context mainContext=this;
+
+
+//	public BlunoLibrary(Context theContext) {
+//
+//		mainContext=theContext;
+//	}
+
+	public abstract void onConectionStateChange(connectionStateEnum theconnectionStateEnum);
+	public abstract void onSerialReceived(String theString);
+	public void serialSend(String theString){
+		if (mConnectionState == connectionStateEnum.isConnected) {
+			mSCharacteristic.setValue(theString);
+			mBluetoothLeService.writeCharacteristic(mSCharacteristic);
+		}
+	}
+
+	private int mBaudrate=115200;	//set the default baud rate to 115200
+	private String mPassword=&quot;AT+PASSWOR=DFRobot\r\n&quot;;
+
+
+	private String mBaudrateBuffer = &quot;AT+CURRUART=&quot;+mBaudrate+&quot;\r\n&quot;;
+
+//	byte[] mBaudrateBuffer={0x32,0x00,(byte) (mBaudrate &amp; 0xFF),(byte) ((mBaudrate&gt;&gt;8) &amp; 0xFF),(byte) ((mBaudrate&gt;&gt;16) &amp; 0xFF),0x00};;
+
+
+	public void serialBegin(int baud){
+		mBaudrate=baud;
+		mBaudrateBuffer = &quot;AT+CURRUART=&quot;+mBaudrate+&quot;\r\n&quot;;
+	}
+
+
+	static class ViewHolder {
+		TextView deviceName;
+		TextView deviceAddress;
+	}
+    private static BluetoothGattCharacteristic mSCharacteristic, mModelNumberCharacteristic, mSerialPortCharacteristic, mCommandCharacteristic;
+    BluetoothLeService mBluetoothLeService;
+    private ArrayList&lt;ArrayList&lt;BluetoothGattCharacteristic&gt;&gt; mGattCharacteristics =
+            new ArrayList&lt;ArrayList&lt;BluetoothGattCharacteristic&gt;&gt;();
+	private LeDeviceListAdapter mLeDeviceListAdapter=null;
+	private BluetoothAdapter mBluetoothAdapter;
+	private boolean mScanning =false;
+	AlertDialog mScanDeviceDialog;
+    private String mDeviceName;
+    private String mDeviceAddress;
+	public enum connectionStateEnum{isNull, isScanning, isToScan, isConnecting , isConnected, isDisconnecting};
+	public connectionStateEnum mConnectionState = connectionStateEnum.isNull;
+	private static final int REQUEST_ENABLE_BT = 1;
+
+	private Handler mHandler= new Handler();
+
+	public boolean mConnected = false;
+
+    private final static String TAG = BlunoLibrary.class.getSimpleName();
+
+    private Runnable mConnectingOverTimeRunnable=new Runnable(){
+
+		@Override
+		public void run() {
+        	if(mConnectionState==connectionStateEnum.isConnecting)
+			mConnectionState=connectionStateEnum.isToScan;
+			onConectionStateChange(mConnectionState);
+			mBluetoothLeService.close();
+		}};
+
+    private Runnable mDisonnectingOverTimeRunnable=new Runnable(){
+
+		@Override
+		public void run() {
+        	if(mConnectionState==connectionStateEnum.isDisconnecting)
+			mConnectionState=connectionStateEnum.isToScan;
+			onConectionStateChange(mConnectionState);
+			mBluetoothLeService.close();
+		}};
+
+	public static final String SerialPortUUID=&quot;0000dfb1-0000-1000-8000-00805f9b34fb&quot;;
+	public static final String CommandUUID=&quot;0000dfb2-0000-1000-8000-00805f9b34fb&quot;;
+    public static final String ModelNumberStringUUID=&quot;00002a24-0000-1000-8000-00805f9b34fb&quot;;
+
+    public void onCreateProcess()
+    {
+    	if(!initiate())
+		{
+			Toast.makeText(mainContext, R.string.error_bluetooth_not_supported,
+					Toast.LENGTH_SHORT).show();
+			((Activity) mainContext).finish();
+		}
+
+
+		Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
+		bindService(gattServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
+
+		// Initializes list view adapter.
+		mLeDeviceListAdapter = new LeDeviceListAdapter();
+		// Initializes and show the scan Device Dialog
+		mScanDeviceDialog = new AlertDialog.Builder(mainContext)
+		.setTitle(&quot;BLE Device Scan...&quot;).setAdapter(mLeDeviceListAdapter, new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which)
+			{
+				final BluetoothDevice device = mLeDeviceListAdapter.getDevice(which);
+				if (device == null)
+					return;
+				scanLeDevice(false);
+
+		        if(device.getName()==null || device.getAddress()==null)
+		        {
+		        	mConnectionState=connectionStateEnum.isToScan;
+		        	onConectionStateChange(mConnectionState);
+		        }
+		        else{
+
+					System.out.println(&quot;onListItemClick &quot; + device.getName().toString());
+
+					System.out.println(&quot;Device Name:&quot;+device.getName() + &quot;   &quot; + &quot;Device Name:&quot; + device.getAddress());
+
+					mDeviceName=device.getName().toString();
+					mDeviceAddress=device.getAddress().toString();
+
+		        	if (mBluetoothLeService.connect(mDeviceAddress)) {
+				        Log.d(TAG, &quot;Connect request success&quot;);
+			        	mConnectionState=connectionStateEnum.isConnecting;
+			        	onConectionStateChange(mConnectionState);
+			            mHandler.postDelayed(mConnectingOverTimeRunnable, 10000);
+		        	}
+			        else {
+				        Log.d(TAG, &quot;Connect request fail&quot;);
+			        	mConnectionState=connectionStateEnum.isToScan;
+			        	onConectionStateChange(mConnectionState);
+					}
+		        }
+			}
+		})
+		.setOnCancelListener(new DialogInterface.OnCancelListener() {
+
+			@Override
+			public void onCancel(DialogInterface arg0) {
+				System.out.println(&quot;mBluetoothAdapter.stopLeScan&quot;);
+
+				mConnectionState = connectionStateEnum.isToScan;
+				onConectionStateChange(mConnectionState);
+				mScanDeviceDialog.dismiss();
+
+				scanLeDevice(false);
+			}
+		}).create();
+
+    }
+
+
+
+    public void onResumeProcess() {
+    	System.out.println(&quot;BlUNOActivity onResume&quot;);
+		// Ensures Bluetooth is enabled on the device. If Bluetooth is not
+		// currently enabled,
+		// fire an intent to display a dialog asking the user to grant
+		// permission to enable it.
+		if (!mBluetoothAdapter.isEnabled()) {
+			if (!mBluetoothAdapter.isEnabled()) {
+				Intent enableBtIntent = new Intent(
+						BluetoothAdapter.ACTION_REQUEST_ENABLE);
+				((Activity) mainContext).startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+			}
+		}
+
+
+	    mainContext.registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
+
+	}
+
+
+    public void onPauseProcess() {
+    	System.out.println(&quot;BLUNOActivity onPause&quot;);
+		scanLeDevice(false);
+		mainContext.unregisterReceiver(mGattUpdateReceiver);
+		mLeDeviceListAdapter.clear();
+    	mConnectionState=connectionStateEnum.isToScan;
+    	onConectionStateChange(mConnectionState);
+		mScanDeviceDialog.dismiss();
+		if(mBluetoothLeService!=null)
+		{
+			mBluetoothLeService.disconnect();
+            mHandler.postDelayed(mDisonnectingOverTimeRunnable, 10000);
+
+//			mBluetoothLeService.close();
+		}
+		mSCharacteristic=null;
+
+	}
+
+
+	public void onStopProcess() {
+		System.out.println(&quot;MiUnoActivity onStop&quot;);
+		if(mBluetoothLeService!=null)
+		{
+//			mBluetoothLeService.disconnect();
+//            mHandler.postDelayed(mDisonnectingOverTimeRunnable, 10000);
+        	mHandler.removeCallbacks(mDisonnectingOverTimeRunnable);
+			mBluetoothLeService.close();
+		}
+		mSCharacteristic=null;
+	}
+
+	public void onDestroyProcess() {
+        mainContext.unbindService(mServiceConnection);
+        mBluetoothLeService = null;
+	}
+
+	public void onActivityResultProcess(int requestCode, int resultCode, Intent data) {
+		// User chose not to enable Bluetooth.
+		if (requestCode == REQUEST_ENABLE_BT
+				&amp;&amp; resultCode == Activity.RESULT_CANCELED) {
+			((Activity) mainContext).finish();
+			return;
+		}
+	}
+
+	boolean initiate()
+	{
+		// Use this check to determine whether BLE is supported on the device.
+		// Then you can
+		// selectively disable BLE-related features.
+		if (!mainContext.getPackageManager().hasSystemFeature(
+				PackageManager.FEATURE_BLUETOOTH_LE)) {
+			return false;
+		}
+
+		// Initializes a Bluetooth adapter. For API level 18 and above, get a
+		// reference to
+		// BluetoothAdapter through BluetoothManager.
+		final BluetoothManager bluetoothManager = (BluetoothManager) mainContext.getSystemService(Context.BLUETOOTH_SERVICE);
+		mBluetoothAdapter = bluetoothManager.getAdapter();
+
+		// Checks if Bluetooth is supported on the device.
+		if (mBluetoothAdapter == null) {
+			return false;
+		}
+		return true;
+	}
+
+	 // Handles various events fired by the Service.
+    // ACTION_GATT_CONNECTED: connected to a GATT server.
+    // ACTION_GATT_DISCONNECTED: disconnected from a GATT server.
+    // ACTION_GATT_SERVICES_DISCOVERED: discovered GATT services.
+    // ACTION_DATA_AVAILABLE: received data from the device.  This can be a result of read
+    //                        or notification operations.
+    private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
+        @SuppressLint(&quot;DefaultLocale&quot;)
+		@Override
+        public void onReceive(Context context, Intent intent) {
+        	final String action = intent.getAction();
+            System.out.println(&quot;mGattUpdateReceiver-&gt;onReceive-&gt;action=&quot;+action);
+            if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
+                mConnected = true;
+            	mHandler.removeCallbacks(mConnectingOverTimeRunnable);
+
+            } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
+                mConnected = false;
+                mConnectionState = connectionStateEnum.isToScan;
+                onConectionStateChange(mConnectionState);
+            	mHandler.removeCallbacks(mDisonnectingOverTimeRunnable);
+            	mBluetoothLeService.close();
+            } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
+                // Show all the supported services and characteristics on the user interface.
+            	for (BluetoothGattService gattService : mBluetoothLeService.getSupportedGattServices()) {
+            		System.out.println(&quot;ACTION_GATT_SERVICES_DISCOVERED  &quot;+
+            				gattService.getUuid().toString());
+            	}
+            	getGattServices(mBluetoothLeService.getSupportedGattServices());
+            } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
+            	if(mSCharacteristic==mModelNumberCharacteristic)
+            	{
+            		if (intent.getStringExtra(BluetoothLeService.EXTRA_DATA).toUpperCase().startsWith(&quot;DF BLUNO&quot;)) {
+						mBluetoothLeService.setCharacteristicNotification(mSCharacteristic, false);
+						mSCharacteristic=mCommandCharacteristic;
+						mSCharacteristic.setValue(mPassword);
+						mBluetoothLeService.writeCharacteristic(mSCharacteristic);
+						mSCharacteristic.setValue(mBaudrateBuffer);
+						mBluetoothLeService.writeCharacteristic(mSCharacteristic);
+						mSCharacteristic=mSerialPortCharacteristic;
+						mBluetoothLeService.setCharacteristicNotification(mSCharacteristic, true);
+						mConnectionState = connectionStateEnum.isConnected;
+						onConectionStateChange(mConnectionState);
+
+					}
+            		else {
+            			Toast.makeText(mainContext, &quot;Please select DFRobot devices&quot;,Toast.LENGTH_SHORT).show();
+                        mConnectionState = connectionStateEnum.isToScan;
+                        onConectionStateChange(mConnectionState);
+					}
+            	}
+            	else if (mSCharacteristic==mSerialPortCharacteristic) {
+            		onSerialReceived(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+				}
+
+
+            	System.out.println(&quot;displayData &quot;+intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+
+//            	mPlainProtocol.mReceivedframe.append(intent.getStringExtra(BluetoothLeService.EXTRA_DATA)) ;
+//            	System.out.print(&quot;mPlainProtocol.mReceivedframe:&quot;);
+//            	System.out.println(mPlainProtocol.mReceivedframe.toString());
+
+
+            }
+        }
+    };
+
+    void buttonScanOnClickProcess()
+    {
+    	switch (mConnectionState) {
+		case isNull:
+			mConnectionState=connectionStateEnum.isScanning;
+			onConectionStateChange(mConnectionState);
+			scanLeDevice(true);
+			mScanDeviceDialog.show();
+			break;
+		case isToScan:
+			mConnectionState=connectionStateEnum.isScanning;
+			onConectionStateChange(mConnectionState);
+			scanLeDevice(true);
+			mScanDeviceDialog.show();
+			break;
+		case isScanning:
+
+			break;
+
+		case isConnecting:
+
+			break;
+		case isConnected:
+			mBluetoothLeService.disconnect();
+            mHandler.postDelayed(mDisonnectingOverTimeRunnable, 10000);
+
+//			mBluetoothLeService.close();
+			mConnectionState=connectionStateEnum.isDisconnecting;
+			onConectionStateChange(mConnectionState);
+			break;
+		case isDisconnecting:
+
+			break;
+
+		default:
+			break;
+		}
+
+
+    }
+
+	void scanLeDevice(final boolean enable) {
+		if (enable) {
+			// Stops scanning after a pre-defined scan period.
+
+			System.out.println(&quot;mBluetoothAdapter.startLeScan&quot;);
+
+			if(mLeDeviceListAdapter != null)
+			{
+				mLeDeviceListAdapter.clear();
+				mLeDeviceListAdapter.notifyDataSetChanged();
+			}
+
+			if(!mScanning)
+			{
+				mScanning = true;
+				mBluetoothAdapter.startLeScan(mLeScanCallback);
+			}
+		} else {
+			if(mScanning)
+			{
+				mScanning = false;
+				mBluetoothAdapter.stopLeScan(mLeScanCallback);
+			}
+		}
+	}
+
+	// Code to manage Service lifecycle.
+   	 ServiceConnection mServiceConnection = new ServiceConnection() {
+
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder service) {
+            System.out.println(&quot;mServiceConnection onServiceConnected&quot;);
+        	mBluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
+            if (!mBluetoothLeService.initialize()) {
+                Log.e(TAG, &quot;Unable to initialize Bluetooth&quot;);
+                ((Activity) mainContext).finish();
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+        	System.out.println(&quot;mServiceConnection onServiceDisconnected&quot;);
+            mBluetoothLeService = null;
+        }
+    };
+
+	// Device scan callback.
+	private BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
+
+		@Override
+		public void onLeScan(final BluetoothDevice device, int rssi,
+				byte[] scanRecord) {
+			((Activity) mainContext).runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println(&quot;mLeScanCallback onLeScan run &quot;);
+					mLeDeviceListAdapter.addDevice(device);
+					mLeDeviceListAdapter.notifyDataSetChanged();
+				}
+			});
+		}
+	};
+
+    private void getGattServices(List&lt;BluetoothGattService&gt; gattServices) {
+        if (gattServices == null) return;
+        String uuid = null;
+        mModelNumberCharacteristic=null;
+        mSerialPortCharacteristic=null;
+        mCommandCharacteristic=null;
+        mGattCharacteristics = new ArrayList&lt;ArrayList&lt;BluetoothGattCharacteristic&gt;&gt;();
+
+        // Loops through available GATT Services.
+        for (BluetoothGattService gattService : gattServices) {
+            uuid = gattService.getUuid().toString();
+            System.out.println(&quot;displayGattServices + uuid=&quot;+uuid);
+
+            List&lt;BluetoothGattCharacteristic&gt; gattCharacteristics =
+                    gattService.getCharacteristics();
+            ArrayList&lt;BluetoothGattCharacteristic&gt; charas =
+                    new ArrayList&lt;BluetoothGattCharacteristic&gt;();
+
+            // Loops through available Characteristics.
+            for (BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics) {
+                charas.add(gattCharacteristic);
+                uuid = gattCharacteristic.getUuid().toString();
+                if(uuid.equals(ModelNumberStringUUID)){
+                	mModelNumberCharacteristic=gattCharacteristic;
+                	System.out.println(&quot;mModelNumberCharacteristic  &quot;+mModelNumberCharacteristic.getUuid().toString());
+                }
+                else if(uuid.equals(SerialPortUUID)){
+                	mSerialPortCharacteristic = gattCharacteristic;
+                	System.out.println(&quot;mSerialPortCharacteristic  &quot;+mSerialPortCharacteristic.getUuid().toString());
+//                    updateConnectionState(R.string.comm_establish);
+                }
+                else if(uuid.equals(CommandUUID)){
+                	mCommandCharacteristic = gattCharacteristic;
+                	System.out.println(&quot;mSerialPortCharacteristic  &quot;+mSerialPortCharacteristic.getUuid().toString());
+//                    updateConnectionState(R.string.comm_establish);
+                }
+            }
+            mGattCharacteristics.add(charas);
+        }
+
+        if (mModelNumberCharacteristic==null || mSerialPortCharacteristic==null || mCommandCharacteristic==null) {
+			Toast.makeText(mainContext, &quot;Please select DFRobot devices&quot;,Toast.LENGTH_SHORT).show();
+            mConnectionState = connectionStateEnum.isToScan;
+            onConectionStateChange(mConnectionState);
+		}
+        else {
+        	mSCharacteristic=mModelNumberCharacteristic;
+        	mBluetoothLeService.setCharacteristicNotification(mSCharacteristic, true);
+        	mBluetoothLeService.readCharacteristic(mSCharacteristic);
+		}
+
+    }
+
+    private static IntentFilter makeGattUpdateIntentFilter() {
+        final IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(BluetoothLeService.ACTION_GATT_CONNECTED);
+        intentFilter.addAction(BluetoothLeService.ACTION_GATT_DISCONNECTED);
+        intentFilter.addAction(BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED);
+        intentFilter.addAction(BluetoothLeService.ACTION_DATA_AVAILABLE);
+        return intentFilter;
+    }
+
+	private class LeDeviceListAdapter extends BaseAdapter {
+		private ArrayList&lt;BluetoothDevice&gt; mLeDevices;
+		private LayoutInflater mInflator;
+
+		public LeDeviceListAdapter() {
+			super();
+			mLeDevices = new ArrayList&lt;BluetoothDevice&gt;();
+			mInflator =  ((Activity) mainContext).getLayoutInflater();
+		}
+
+		public void addDevice(BluetoothDevice device) {
+			if (!mLeDevices.contains(device)) {
+				mLeDevices.add(device);
+			}
+		}
+
+		public BluetoothDevice getDevice(int position) {
+			return mLeDevices.get(position);
+		}
+
+		public void clear() {
+			mLeDevices.clear();
+		}
+
+		@Override
+		public int getCount() {
+			return mLeDevices.size();
+		}
+
+		@Override
+		public Object getItem(int i) {
+			return mLeDevices.get(i);
+		}
+
+		@Override
+		public long getItemId(int i) {
+			return i;
+		}
+
+		@Override
+		public View getView(int i, View view, ViewGroup viewGroup) {
+			ViewHolder viewHolder;
+			// General ListView optimization code.
+			if (view == null) {
+				view = mInflator.inflate(R.layout.listitem_device, null);
+				viewHolder = new ViewHolder();
+				viewHolder.deviceAddress = (TextView) view
+						.findViewById(R.id.device_address);
+				viewHolder.deviceName = (TextView) view
+						.findViewById(R.id.device_name);
+				System.out.println(&quot;mInflator.inflate  getView&quot;);
+				view.setTag(viewHolder);
+			} else {
+				viewHolder = (ViewHolder) view.getTag();
+			}
+
+			BluetoothDevice device = mLeDevices.get(i);
+			final String deviceName = device.getName();
+			if (deviceName != null &amp;&amp; deviceName.length() &gt; 0)
+				viewHolder.deviceName.setText(deviceName);
+			else
+				viewHolder.deviceName.setText(R.string.unknown_device);
+			viewHolder.deviceAddress.setText(device.getAddress());
+
+			return view;
+		}
+	}
+}
+</code></pre>
+        <br>
+
+        <p class="zhu"><a href="/">🍜</a>&emsp;由Landers编写</p>
+        <div class="postmar"></div>
+    </div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+
+    <footer class="footer">
+        <div class="footbanner">
+            <a href="/">返回主页</a>
+            <span class="split">|</span>
+            <a href="/status/">站点信息</a>
+            <span class="split">|</span>
+            <a href="/copyright/">版权声明</a>
+            <span class="split">|</span>
+            <a href="/public/">公共主页</a>
+        </div>
+      <div class="footer-inner">
+        <div class="copyright">
+            <span style="color: dimgrey" class="author" itemprop="copyrightHolder">©Landers | 华中科技大学</span>
+        </div>
+
+      </div>
+    </footer>
+
+
+  <script src="/static/js/nocopy.js"></script>
+  <script src="/static/js/wiki.js"></script>
+</body>
+</html>

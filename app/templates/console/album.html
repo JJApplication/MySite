@@ -1,0 +1,135 @@
+{% extends "console/base.html" %}
+
+{% block style %}
+ <style>
+ #panel{
+     margin-top: 30px;
+     box-shadow: 0 0 10px #999999;
+     padding: 20px;
+     border-radius: 20px;
+ }
+ input{
+     font-size: 20px;
+     line-height: 1.5;
+     padding: 4px;
+     width: calc(100% - 100px);
+     outline: none;
+     border-radius: 10px;
+     border: 2px solid #888888;
+
+ }
+ textarea{
+     width: calc(100% - 100px);
+     border-radius: 10px;
+     border: 2px solid #888888;
+     outline: none;
+ }
+ #panel span{display: inline-block;width: 80px;}
+ .bt{
+     border: none;
+     display: block;
+     background-color: #4e8fff;
+     border-radius: 30px;
+     padding: 10px 40px;
+     color: white;
+     font-size: 26px;
+     margin: 40px auto 0;
+     cursor: pointer;
+     outline: none;
+     font-family:  'PT Sans Narrow', Helvetica, Arial, sans-serif;
+ }
+ a{
+     border: 2px solid #444444;
+     border-radius: 12px;
+     padding: 4px 10px;
+     margin-bottom: 30px;
+     display: inline-block;
+     font-size: 18px;
+     text-decoration: none;
+     color: #444444;
+
+ }
+ .sm{width: calc(50% - 100px)}
+
+ @media (max-width: 500px) {
+     #panel{padding: 20px 10px}
+     #panel span{width: 60px;font-size: 18px}
+     input{width: calc(100% - 80px)}
+     textarea{width: calc(100% - 100px)}
+     .bt{font-size: 20px}
+     .sm{width: calc(50% - 80px)}
+ }
+</style>
+
+{% endblock%}
+{% block body %}
+    <div id="panel" class="animated slideInDown">
+        <a href="/console">⇠  BACK</a>
+        <p style="margin-bottom: 20px">
+            <span>New</span><input type="text" autocomplete="off" v-model="newest"><br>
+        </p>
+        <p style="margin-bottom: 20px">
+            <span>Year</span><input type="text" autocomplete="off" v-model="year"><br>
+        </p>
+        <p style="margin-bottom: 20px">
+            <span>Date</span><input type="text" placeholder="eg:2017/8" autocomplete="off" v-model="date"><br>
+        </p>
+        <p style="margin-bottom: 20px">
+            <span>Start</span><input type="text" autocomplete="off" v-model="start" class="sm">
+            <span>Count</span><input type="text" autocomplete="off" v-model="count" class="sm">
+        </p>
+        <p style="margin-bottom: 20px">
+            <span>Info</span><input type="text" autocomplete="off" v-model="info"><br>
+        </p>
+        <p>
+            <span>X CODE</span><input type="text" autocomplete="off" style="color: orangered" v-model="code"><br>
+        </p>
+    <button class="bt" @click="add">ADD</button>
+    </div>
+
+{% block script %}
+    <!--vue-->
+    <script>
+        new Vue({
+            el: "#app",
+            data: function () {
+                return{
+                    newest: '',
+                    year: '',
+                    date: '',
+                    start: '',
+                    count: '',
+                    info: '',
+                    code: ''
+                }
+            },
+            mounted(){
+              axios.get('/api/album_new' + '?key=110').then(res=>{
+                  this.newest = res.data.replace(".jpg","");
+              });
+            },
+            methods: {
+                add(){
+                    let data = {
+                        "year": this.year,
+                        "date": this.date,
+                        "start": this.start,
+                        "count": this.count,
+                        "info": this.info,
+                        "code": this.code
+                    };
+                    axios.post('/api/album_add',data).then(res=>{
+                        if(res.data === "ok"){
+                            alert("ok");
+                        }else{
+                            alert("wrong");
+                        }
+                    }).catch(()=>{
+                        alert("wrong");
+                    });
+                }
+            }
+    });
+    </script>
+{% endblock %}
+{% endblock %}

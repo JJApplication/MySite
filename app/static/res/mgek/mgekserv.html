@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="theme-color" content="crimson">
+    <meta name="msvalidate.01" content="true">
+
+    <link href="/static/res/favicon.png" rel="icon">
+    <link href="/static/css/font/lato.css" rel="stylesheet">
+    <link href="/static/css/font/bad.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/highlight.js/9.13.1/styles/atom-one-dark.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="/static/css/mgekwiki.css">
+  <title>Doc | Landers</title>
+
+</head>
+
+<body>
+
+  <div>
+
+    <div id="box" class="custom-logo-site-title animated fadeInDown">
+      <a href="/" class="brand" rel="start">
+        <span class="site-title">Landers1037</span>
+      </a>
+    </div>
+        <h1 class="site-subtitle animated fadeInDown">河汉清且浅 相去复几许</h1>
+        <span class="top"><a href="/docs/"><p>Mgek</p></a></span>
+  </div>
+
+
+      <div class="main-inner">
+        <div class="content-wrap">
+
+          <div id="content" class="content">
+
+  <div class="post-block">
+
+      <div class="post-header">
+          <p class="post-title" itemprop="name headline"><span style="color: crimson">Mgekserv</span>文档</p>
+      </div>
+
+    <div class="post-body">
+	<h1>Mgekserv是一个邮件短信通知服务</h1>
+
+        <h3>安装</h3>
+        <pre><code class='language-shell' lang='shell'>$ git clone https://github.com/Landers1037/simple-email-sms.git</code></pre>
+        <h3>依赖</h3>
+        <pre><code class='language-shell' lang='shell'>
+pip install schedule
+pip install twilio
+pip install psutil
+        </code></pre>
+
+        <h3>一键安装启动</h3>
+        <pre><code class='language-shell' lang='shell'>$ ./start.sh</code></pre>
+        <h3>配置</h3>
+        <pre><code class='language-json' lang='json'>{
+    &quot;mail&quot;: &quot;true&quot;,
+    &quot;sms&quot;: &quot;true&quot;,
+    &quot;notice&quot;: &quot;true&quot;,
+    &quot;username&quot;: &quot;xxx@163.com&quot;,
+    &quot;password&quot;: &quot;123456&quot;,
+    &quot;sender&quot;: &quot;xxx@163.com&quot;,
+    &quot;receiver&quot;: [&quot;xxx@qq.com&quot;],
+    &quot;subject&quot;: &quot;python mail test&quot;,
+    &quot;source&quot;: &quot;xxx@163.com &lt;xxx@163.com&gt;&quot;,
+    &quot;text&quot;: &quot;just a email test,please ignore&quot;,
+    &quot;smtp&quot;: &quot;smtp.163.com&quot;,
+    &quot;port&quot;: 25,
+    &quot;mailtime&quot;: &quot;06:30&quot;,
+    &quot;account_sid&quot;: &quot;ACc986e47ssxxxxxxx&quot;,
+    &quot;auth_token&quot;: &quot;d42852c86aae943e76&quot;,
+    &quot;from_phone&quot;: &quot;+1555555&quot;,
+    &quot;to_phone&quot;: &quot;+8610086&quot;,
+    &quot;message&quot;: &quot;this is a sms test send from xxx&quot;,
+    &quot;smstime&quot;: &quot;18:30&quot;,
+    &quot;sysprocess&quot;: [&quot;nginx&quot;, &quot;python&quot;, &quot;aria2c&quot;]
+}
+        </code></pre>
+
+        <h3>开启服务</h3>
+        <pre><code class='language-shell' lang='shell'>$ nohup python3 simple-email-sms/service.py &amp;</code></pre>
+        <h3>激活系统服务监听报告</h3>
+        <pre><code class='language-json' lang='json'>
+&quot;notice&quot;: &quot;true&quot;,
+&quot;sysprocess&quot;: [&quot;nginx&quot;, &quot;python&quot;, &quot;aria2c&quot;]
+        </code></pre>
+        <pre><code class='json' lang='json'>
+Sent from your Twilio trial account
+内存占用率：37.6%
+vsftpd:ok
+aria2c:ok
+nginx:ok
+        </code></pre>
+
+        <h3>关闭服务</h3>
+        <pre><code class='language-shell' lang='shell'>
+$ ps ax | grep mgekserv
+$ kill pid
+        </code></pre>
+
+        <p class="zhu"><a href="/">🍜</a>&emsp;由Landers编写</p>
+        <div class="postmar"></div>
+    </div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+
+    <footer class="footer">
+        <div class="footbanner">
+            <a href="/">返回主页</a>
+            <span class="split">|</span>
+            <a href="/status/">站点信息</a>
+            <span class="split">|</span>
+            <a href="/copyright/">版权声明</a>
+            <span class="split">|</span>
+            <a href="/public/">公共主页</a>
+        </div>
+      <div class="footer-inner">
+        <div class="copyright">
+            <span style="color: dimgrey" class="author" itemprop="copyrightHolder">©Landers | 华中科技大学</span>
+        </div>
+
+      </div>
+    </footer>
+
+
+  <script src="/static/js/nocopy.js"></script>
+  <script src="/static/js/wiki.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends './base/mod_base1.html' %}
+{% block title %}Thoughts | 想法{% endblock title %}
+
+{% block body %}
+
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">
+              <p style="font-size: 120%">我的想法</p>
+          </h2>
+      </header>
+
+    <div class="post-body" itemprop="articleBody">
+            {% for data in datas|reverse %}
+                <p style="font-size: 80%;margin: 0 0 10px 0">{{ data.day }}</p>
+                <li style="margin-right: 10px">{{ data.thought }}</li>
+                <hr>
+            {% endfor %}
+
+        <div class="postmar"><br></div>
+    </div>
+{% endblock body %}

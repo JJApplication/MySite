@@ -1,0 +1,5 @@
+@font-face {
+    font-display: swap;
+    font-family: 'Lato';
+    src: url("/static/res/font/Lato-Regular.woff2") format('woff');
+}

@@ -1,0 +1,73 @@
+---
+title: CentOS测试开启bbr
+date: 2020-01-21 18:34:58
+tags:
+  - linux
+categories:
+  - linux
+abstract:
+---
+
+在CentOS系统里开启BBR加速
+
+<!--more-->
+
+# 查看内核
+
+```bash
+uname -r
+```
+
+bbr要求内核的版本高于4.9
+
+## 更新仓库
+
+```bash
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+
+yum install https://www.elrepo.org/elrepo-release-7.0-4.el7.elrepo.noarch.rpm -y
+```
+
+针对CentOS6，使用
+
+```bash
+yum install https://www.elrepo.org/elrepo-release-6-9.el6.elrepo.noarch.rpm -y
+```
+
+## 安装内核
+
+```bash
+yum --enablerepo=elrepo-kernel install kernel-ml -y
+```
+
+使用新的内核启动
+
+```bash
+grub2-set-default 0
+```
+
+如果该内核参数不为0，则
+
+```bash
+awk -F\' '$1=="menuentry " {print i++ " : " $2}' /etc/grub2.cfg
+```
+
+然后重启系统即可
+
+### 启用
+
+在内核版本高于4.9的机器上，直接修改配置文件
+
+```bash
+echo 'net.core.default_qdisc=fq' >> /etc/sysctl.conf
+echo 'net.ipv4.tcp_congestion_control=bbr' >> /etc/sysctl.conf
+
+sysctl -p
+```
+
+### 查看bbr运行状态
+
+```bash
+lsmod | grep tcp_bbr
+```
+

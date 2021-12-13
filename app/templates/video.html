@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Videos of Landers</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f7c873">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="video of landers,这是我的个人视频相册" />
+	<meta name="keywords" content="album,videos,廖仁杰,廖仁杰的相册" />
+	<meta name="author" content="Landers" />
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name=”x5-page-mode” content="app">
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link href="/static/res/apple-icon.png" rel="apple-touch-icon">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7.9.3/dist/video.min.js" integrity="sha256-MCVEzQgWsXEsXzD9DJTpKQJoQzUqRfbURqkp+mF95HI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.9.3/dist/video-js.min.css" integrity="sha256-/fXfq3QrnWyMYmF0zX6ImdI1DTraNCAq1vPofa2rs2w=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.15.0/dist/videojs-contrib-hls.min.js" integrity="sha256-Iv7h2GglzGahVcHidHzdgB571K/2uVhOLCgOND5fs48=" crossorigin="anonymous"></script>
+
+</head>
+<style>
+    *{padding: 0;margin: 0}
+    html{background-color: #ffffff;color: #444444;height: 100%;width: 100%}
+    body{height: 100%;width: 100%}
+    video{-webkit-tap-highlight-color: transparent}
+    .body{text-align: center;position: relative;height: 100%;max-width: 800px;margin: 0 auto;background-color: white;box-shadow: 0 0 10px 2px #aaaaaa}
+    .header{padding: 0;user-select: none;cursor: pointer;text-align: left;
+        -webkit-tap-highlight-color: transparent;
+    }
+    h2{font-size: 26px;padding: 20px 8px;background-color: #f7c873;color: #444444}
+    #v{background-color: red;color: white;padding: 2px 8px;border-radius: 5px;font-size: 18px}
+    #me{
+        color: #444444;
+        font-size: 15px;
+        padding: 15px 8px;
+        background-color: #e9e9e9;
+        font-family: 'Source Sans Pro','Fira Code','Source Han Sans SC','Helvetica','PingFang SC','Heiti SC','PT Sans Narrow','Segoe UI','Microsoft YaHei',Arial,sans-serif;
+    }
+    #me a{font-weight: bold}
+    #me a:hover{border-bottom: 2px solid #2176ff}
+    a{text-decoration: none;color: #2176ff}
+    i{font-style: normal;cursor: pointer;display: inline-block;margin-right: 4px}
+
+    #container{padding: 0 0 10px 0;}
+    .bar{text-align: left;font-size: 16px;background-color: #e5e5e5;color: #222222;padding: 15px 10px 10px 10px}
+    #info{color: #444444;margin-right: 20px;font-weight: bold;font-size: 18px}
+    #date{background-color: #4e93ff;color: white;padding: 4px 10px;border-radius: 15px;font-size: 12px;}
+    #like{margin-right: 10px;display: inline-block;width: 60px}
+    #share{margin-right: 10px;display: inline-block;width: 60px}
+    #play{display: inline-block;width: 60px}
+    .bt-group{
+        font-size: 18px;
+        color: #353535;
+        padding: 4px 0;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .bottom{margin-top: 20px}
+    #player{width: 100%;height: 440px;transition: .3s ease}
+    @media (max-width: 500px) {
+        h2{font-size: 25px}
+        #v{font-size: 15px}
+        #container{padding: 0 0 20px 0;}
+        #me{padding: 12px 4px}
+        .bt-group{font-size: 16px}
+        .bottom{margin-top: 80px}
+        #player{height: 360px;transition: .3s ease}
+        #like, #share ,#play{width: 45px}
+    }
+    @media (max-width: 400px) {
+        #player{height: 280px;transition: .3s ease}
+    }
+
+</style>
+<body>
+<div class="body">
+    <div class="header">
+        <h2 class="animated fadeInDown" onclick="window.history.back()">Landers.&nbsp;<span id="v">VLOG</span></h2>
+        <p class="animated fadeInDown" id="me">Renj.io <a href="/album" style="margin-right: 10px;margin-left: 15px">相册</a>
+            <a href="/videos" style="margin-right: 10px">视频</a>
+            <a href="/">主页</a>
+        </p>
+    </div>
+   <div id="container">
+    <video id="player" class="video-js vjs-default-skin vjs-big-play-centered">
+        <source src="/static/res/video/{{ video.name }}/{{ video.name }}.m3u8" type="application/x-mpegURL">
+    </video>
+       <div class="bar">
+           <p style="margin-bottom: 15px;"><span id="info">{{ video.info }}</span><span id="date">{{ video.date }}</span></p>
+           <div class="bt-group">
+               <i onclick="like()">👍</i><span id="like">{{ video.like }}</span>
+               <i onclick="share()">🤣</i><span id="share">{{ video.share }}</span>
+               <i>👀</i><span id="play">{{ video.play }}</span>
+           </div>
+       </div>
+       <div class="bottom">
+           <p>By <a href="/">Renj.io</a></p>
+           <p style="margin-bottom: 0">I'm happy to share it with U.❤</p>
+       </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    let player = videojs("player",
+        {
+            poster: "",
+            controls: true,
+            autoplay: false,
+            muted: true,
+            fluid: false,
+            preload: "metadata"
+        });
+
+    window.onload = function () {
+        update();
+    };
+    var like_c,share_c,play_c = 0;
+    function update() {
+        axios.get("/api/videos?name=" + {{ video.name|tojson }}).then(res=>{
+            like_c = res.data.like;
+            share_c = res.data.share;
+            play_c = res.data.play;
+            document.getElementById("like").innerText = like_c;
+            document.getElementById("share").innerText = share_c;
+            document.getElementById("play").innerText = play_c;
+        }).catch(()=>{
+            document.getElementById("like").innerText = "None";
+            document.getElementById("share").innerText = "None";
+            document.getElementById("play").innerText = "None";
+        });
+    }
+    function like() {
+        let data = {"name": {{ video.name|tojson }}, "like": true};
+        axios.post("/api/videos",data).then(res=>{
+            console.log(res);
+            update();
+        })
+    }
+    function share() {
+        let data = {"name": {{ video.name|tojson }}, "share": true};
+        axios.post("/api/videos",data).then(res=>{
+            console.log(res);
+            update()
+        })
+    }
+    function play() {
+        let data = {"name": {{ video.name|tojson }}, "play": true};
+        axios.post("/api/videos",data).then(res=>{
+            console.log(res);
+            update()
+        })
+    }
+    player.on("play",function () {
+        play();
+    });
+</script>
+</body>
+</html>

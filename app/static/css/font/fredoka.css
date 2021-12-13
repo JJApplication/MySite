@@ -1,0 +1,5 @@
+@font-face {
+    font-display: swap;
+    font-family: 'Bad';
+    src: url("/static/res/font/FredokaOne-Regular.woff2") format('woff');
+}

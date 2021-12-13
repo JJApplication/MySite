@@ -1,0 +1,171 @@
+ *,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    width: 380px;
+    height: 80px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    background: #080915;
+}
+
+
+/*LOADER-17*/
+section .loader-17{
+    display: inline-block;
+    text-align: center;
+    margin-top: 25px;
+}
+.loader-17 .css-square {
+    display: inline-block;
+    position: relative;
+    width: 40px; height: 12px;
+    background: white;
+    box-shadow: 2px 2px 3px 0px black;
+}
+
+
+.loader-17 .square1 {
+    position: relative;
+    left: 2px;
+    -webkit-animation: dominos 1s 0.125s ease infinite;
+    animation: dominos 1s 0.125s ease infinite;
+}
+
+.loader-17 .square2 {
+    position: relative;
+    left: 5px;
+    -webkit-animation: dominos 1s 0.3s ease infinite;
+    animation: dominos 1s 0.3s ease infinite;
+}
+
+.loader-17 .square3 {
+    position: relative;
+    left: 5px;
+    -webkit-animation: dominos 1s 0.425s ease infinite;
+    animation: dominos 1s 0.425s ease infinite;
+}
+
+.loader-17 .square4 {
+    position: relative;
+    left: 5px;
+    -webkit-animation: dominos 1s 0.540s ease infinite;
+    animation: dominos 1s 0.540s ease infinite;
+}
+
+.loader-17 .square5 {
+    position: relative;
+    left: 5px;
+    -webkit-animation: dominos 1s 0.665s ease infinite;
+    animation: dominos 1s 0.665s ease infinite;
+}
+
+.loader-17 .square6 {
+    position: relative;
+    left: 5px;
+    -webkit-animation: dominos 1s 0.79s ease infinite;
+    animation: dominos 1s 0.79s ease infinite;
+}
+
+.loader-17 .square7 {
+    position: relative;
+    left: 5px;
+    -webkit-animation: dominos 1s 0.9s ease infinite;
+    animation: dominos 1s 0.9s ease infinite;
+}
+
+.loader-17 .square8 {
+    position: relative;
+    left: 5px;
+    -webkit-animation: dominos 1s 1s ease infinite;
+    animation: dominos 1s 1s ease infinite;
+}
+
+
+/* ----------------     KEYFRAMES    ----------------- */
+@-webkit-keyframes dominos {
+50% { opacity: 0.7; }
+75% { -webkit-transform: rotate(90deg); transform: rotate(90deg); }
+80% { opacity: 1; } 
+}
+
+
+@keyframes dominos {
+50% { opacity: 0.7; }
+75% { -webkit-transform: rotate(90deg); transform: rotate(90deg); }
+80% { opacity: 1; } 
+}
+
+
+@-webkit-keyframes star-crazyness {
+    0% {
+        opacity: 0.4;
+        -webkit-transform: rotate(180deg) translate(0px, 0) scale(0.6);
+        transform: rotate(180deg) translate(0px, 0) scale(0.6);
+    }
+    25% {
+        opacity: 0.4;
+        -webkit-transform: rotate(180deg) translate(0, 0) scale(0.2);
+        transform: rotate(180deg) translate(0, 0) scale(0.2);
+    }
+    50% {
+        opacity: 0.7;
+        -webkit-transform: rotate(180deg) translate(5px, 5px) scale(0.4);
+        transform: rotate(180deg) translate(5px, 5px) scale(0.4);
+    }
+    75% {
+        opacity: 0.4;
+        -webkit-transform: rotate(180deg) translate(0, 0) scale(0.6);
+        transform: rotate(180deg) translate(0, 0) scale(0.6);
+    }
+    80% {
+        opacity: 1;
+        -webkit-transform: rotate(180deg) translate(5px, 0) scale(0.1);
+        transform: rotate(180deg) translate(5px, 0) scale(0.1);
+    }
+    100% {
+        opacity: 0.4;
+        -webkit-transform: rotate(180deg) translate(0, 0) scale(0.6);
+        transform: rotate(180deg) translate(0, 0) scale(0.6);
+    }
+}
+
+@keyframes star-crazyness {
+    0% {
+        opacity: 0.4;
+        -webkit-transform: rotate(180deg) translate(0px, 0) scale(0.6);
+        transform: rotate(180deg) translate(0px, 0) scale(0.6);
+    }
+    25% {
+        opacity: 0.4;
+        -webkit-transform: rotate(180deg) translate(0, 0) scale(0.2);
+        transform: rotate(180deg) translate(0, 0) scale(0.2);
+    }
+    50% {
+        opacity: 0.7;
+        -webkit-transform: rotate(180deg) translate(5px, 5px) scale(0.4);
+        transform: rotate(180deg) translate(5px, 5px) scale(0.4);
+    }
+    75% {
+        opacity: 0.4;
+        -webkit-transform: rotate(180deg) translate(0, 0) scale(0.6);
+        transform: rotate(180deg) translate(0, 0) scale(0.6);
+    }
+    80% {
+        opacity: 1;
+        -webkit-transform: rotate(180deg) translate(5px, 0) scale(0.1);
+        transform: rotate(180deg) translate(5px, 0) scale(0.1);
+    }
+    100% {
+        opacity: 0.4;
+        -webkit-transform: rotate(180deg) translate(0, 0) scale(0.6);
+        transform: rotate(180deg) translate(0, 0) scale(0.6);
+    }
+}

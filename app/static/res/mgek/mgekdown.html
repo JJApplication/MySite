@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="theme-color" content="crimson">
+    <meta name="msvalidate.01" content="true">
+
+    <link href="/static/res/favicon.png" rel="icon">
+    <link href="/static/css/font/lato.css" rel="stylesheet">
+    <link href="/static/css/font/bad.css" rel="stylesheet">
+        <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+        <link href="https://cdn.bootcss.com/highlight.js/9.15.9/styles/atom-one-light.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="/static/css/mgekwiki.css">
+  <title>Doc | Landers</title>
+
+</head>
+
+<body>
+
+  <div>
+
+    <div id="box" class="custom-logo-site-title animated fadeInDown">
+      <a href="/" class="brand" rel="start">
+        <span class="site-title">Landers1037</span>
+      </a>
+    </div>
+        <h1 class="site-subtitle animated fadeInDown">河汉清且浅 相去复几许</h1>
+        <span class="top"><a href="/docs/"><p>Mgek</p></a></span>
+  </div>
+
+
+      <div class="main-inner">
+        <div class="content-wrap">
+
+          <div id="content" class="content">
+
+  <div class="post-block">
+
+      <div class="post-header">
+          <p class="post-title" itemprop="name headline"><span style="color: crimson">Mgekdown</span>文档</p>
+      </div>
+
+    <div class="post-body">
+	<h1>Mgekdown是一个md文本转换工具</h1>
+
+    <h3>功能</h3>
+    <p>配合flask，支持对markdown文本转换后使用Jinjia渲染显示</p>
+    <h3>需求</h3>
+        <p>需求格式化一致的md文件，工具使用的是hexo的模板</p>
+        <p>适合原本是hexo等静态博客，想将md原文件转为flask的需求</p>
+        <p>详细需求</p>
+    <b>hexo模板样式</b>
+    <pre><code class='markdown' lang='markdown'>
+        ---
+        title: {{ title }}
+        date: {{ date }}
+        tags:
+        categories:
+        abstract:
+        ---
+        摘要
+        &lt;!--more--&gt;
+    </code></pre>
+    <b>flask初始化</b>
+        <p>添加自定义的md过滤器</p>
+        <pre class="python"><code>
+@app.template_filter('md')
+def markdown_to_html(txt):
+    return markdown(txt,extensions=['markdown.extensions.fenced_code','markdown.extensions.extra','markdown.extensions.smarty','markdown.extensions.nl2br'])
+        </code></pre>
+
+     <h3>测试</h3>
+        <pre class="python"><code>
+if __name__ == '__main__':
+    m = Mgekdown() #初始化处理对象
+    print(m.filelist('post')) #得到post下的全部md文件名称列表
+    print(m.read('post/test.md')) #读取md文件的内容
+    txt = m.read('post/test.md')
+    print(m.title(txt)) #读取顶部标签内的文章标题
+    print(m.content(txt)) #去除md内容的顶部标签部分，得到文章内容
+    print(m.abstract(txt)) <span id="提取文">  </span>章摘要
+        </code></pre>
+
+        <h3>使用</h3>
+        <p>flask中添加博客路由</p>
+        <pre class="python"><code>
+from markdown import markdown
+from mgekdown import Mgekdown as mgd
+
+@app.route('/blog/post/&lt;string:name>/')
+def blog_post(name):
+    txt = mgd.read('post/'+ name.replace('/','')+'.md')
+    content = mgd.content(txt)
+    title = mgd.title(txt)
+
+    return render_template('blog_post.html',content=content,title=title)
+        </code></pre>
+        <p>对应的html模板</p>
+        <pre class="html"><code>
+{% extends 'base.html' %}
+{% block title %}博客{% endblock title %}
+&lt;div class="list-group">
+    &lt;div class="list-group-item">
+    {{ post|md|safe}}
+    &lt;/div>
+&lt;/div>
+{% endblock body %}
+        </code></pre>
+        <p>使用<code>{{ post|md|safe}}</code>自定义的md过滤器渲染markdown文本内容</p>
+
+        <h3>接口</h3>
+        <pre class="python"><code>
+mgd.filelist(path) #读取存放md文件的目录返回文件名称列表，名称经过url规范编码处理可以直接加入flask路由
+mgd.read(file) #读取md文件的内容
+mgd.content(txt) #对md格式文本处理，提取正文内容
+mgd.title(txt) #对md格式文本处理，提取标题
+mgd.abstract(txt) #对md格式文本处理，获取文章摘要
+        </code></pre>
+
+        <h3>源码地址</h3>
+        <a href="https://github.com/Landers1037/mgekdown">Github</a>
+    <br>
+
+        <p class="zhu"><a href="/">🍜</a>&emsp;由Landers编写</p>
+        <div class="postmar"></div>
+    </div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+
+    <footer class="footer">
+        <div class="footbanner">
+            <a href="/">返回主页</a>
+            <span class="split">|</span>
+            <a href="/status/">站点信息</a>
+            <span class="split">|</span>
+            <a href="/copyright/">版权声明</a>
+            <span class="split">|</span>
+            <a href="/public/">公共主页</a>
+        </div>
+      <div class="footer-inner">
+        <div class="copyright">
+            <span style="color: dimgrey" class="author" itemprop="copyrightHolder">©Landers | 华中科技大学</span>
+        </div>
+
+      </div>
+    </footer>
+
+
+  <script src="/static/js/nocopy.js"></script>
+  <script src="/static/js/wiki.js"></script>
+</body>
+</html>

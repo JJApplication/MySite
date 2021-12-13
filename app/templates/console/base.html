@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>控制台</title>
+    {% block head %}
+
+    {% endblock head %}
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name=”x5-page-mode” content="app">
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link rel="apple-touch-icon" href="/static/res/apple-icon.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/res/apple-icon120.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/res/apple-icon152.png"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha256-j+P6EZJVrbXgwSR5Mx+eCS6FvP9Wq27MBRC/ogVriY0=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js" integrity="sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=" crossorigin="anonymous"></script>
+    <link href="https://fonts.font.im/css?family=PT+Sans+Narrow" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+</head>
+<style>
+    *{margin: 0;padding: 0}
+        #app{
+        font-family:  'PT Sans Narrow', Helvetica, Arial, sans-serif;
+        padding: 20px;
+        font-size: 20px;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+    #console{
+        font-size: 16px;
+        color: white;
+        background-color: #378de5;
+        border-radius: 16px;
+        padding: 4px 12px;
+        margin-left: 12px;
+    }
+    a{-webkit-tap-highlight-color: transparent}
+    input{-webkit-tap-highlight-color: transparent}
+    button{outline: none!important;-webkit-shape-outside: none!important;-webkit-tap-highlight-color: transparent;border: none;user-select: none}
+    button:focus{outline: none!important;-webkit-shape-outside: none;}
+    button:hover{outline: none!important;}
+    button:active{outline: none}
+
+    @media (max-width: 500px) {
+        #app{padding: 20px 10px}
+    }
+</style>
+    {% block style %}
+
+    {% endblock style %}
+<body>
+
+<div id="app">
+    <div id="head">
+        <p style="font-size: 36px">Renj.io<span id="console">console</span></p>
+    </div>
+
+{% block body %}
+    {% block script %}
+
+    {% endblock script %}
+{% endblock body %}
+
+</div>
+</body>
+</html>

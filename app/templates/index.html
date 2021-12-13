@@ -1,0 +1,121 @@
+{% extends "base/mod_base3.html" %}
+
+{% block script %}
+<!--
+    <script>
+        if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            window.location = "/mobile";
+            }
+    </script>
+-->	
+{% endblock %}
+
+{% block body %}
+          <header class="post-header">
+              <h2 class="post-title" style="margin: 0 0 20px" itemprop="name headline">
+                  <p style="font-size: 35px;">Landers的主页</p>
+              </h2>
+          </header>
+
+        <div class="post-body" itemprop="articleBody">
+            <p>你好，我是Landers，来自HUST(华中科技大学)🌎<br>这里是我记录学习点滴，放松身心，享受乐趣的地方，感谢你的到来！</p>
+            <p>目前就读于EIC，正在努力向CS奋斗，鲁迅说过:“通向成功没有捷径只有不断努力奋斗”。热衷于自己喜爱的事业，向往的生活才会向你抛出橄榄枝，一起努力加油！</p>
+
+            <h3 style="font-size: 22px;margin-bottom: 0;padding-top: 0">这里有什么</h3>
+            <p>记录点滴的博客<a href="/blog">Blog</a>，记录生活的相册<a href="/album">Album</a><br>
+             我的一些<a href="/thoughts">胡思乱想</a>，平时收集的奇怪的<a href="/go">问题</a><br>
+             ssr可视化爬虫<a href="/ssr">SSBoard</a>，一个仿Forest的番茄钟<a href="/forest">Forest</a><br>
+             Mgek项目的帮助文档索引<a href="/docs">Docs</a>，我的<a href="http://blog.renj.io">技术博客</a><br>
+             我的一份<a href="http://me.renj.io">个人简历</a>，花上三分钟时间了解我
+            </p>
+
+            <h3 style="font-size: 22px;margin-bottom: 0;padding-top: 0">其他网站</h3>
+            <p style="margin-bottom: 5px">你还可以在这些地方找到我</p>
+                <li class="indexli">知乎: <a href="https://www.zhihu.com/people/49c7754c0557f6e5db42cd8588c940ca">zhihu</a></li>
+                <li class="indexli">Github: <a href="http://github.com/landers1037">Github</a></li>
+                <li class="indexli">Gitee: <a href="https://gitee.com/hotwaterman">Gitee</a></li>
+                <li class="indexli">掘金: <a href="http://juejin.im/user/5d540cffe51d45621512ad50">Juejin</a></li>
+                <li class="indexli">开源中国: <a href="https://my.oschina.net/u/4172517">osChina</a></li>
+
+             <h3 style="font-size: 22px;margin-bottom: 0;padding-top: 0">我的code</h3>
+             <div class="list">
+                <div class="list-item">
+                    <img src="/static/res/home/img/pinyin.jpg" width="55" height="55">
+                    <div class="list-child">
+                    <h5>Pin Yin</h5>
+                        <p>图形化拼音模板生成工具</p>
+                        <a href="https://github.com/Landers1037/pinyindemo">源码地址</a>&emsp;<a href="https://github.com/Landers1037/pinyindemo.git">克隆下载</a>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <img src="/static/res/home/img/nms.jpg" width="55" height="55">
+                    <div class="list-child">
+                    <h5>NMS(毕业设计)</h5>
+                        <p>智慧教室IP广播管理系统</p>
+                        <a href="https://github.com/Landers1037/ipbroadcast">源码地址</a>&emsp;<a href="https://github.com/Landers1037/ipbroadcast.git">克隆下载</a>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <img src="/static/res/home/img/pigform.jpg" width="55" height="55">
+                    <div class="list-child">
+                    <h5>Pigform</h5>
+                        <p>医疗机构管理系统表格</p>
+                        <a href="https://github.com/Landers1037/pigform">源码地址</a>&emsp;<a href="https://github.com/Landers1037/pigform.git">克隆下载</a>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <img src="/static/res/home/img/img.jpg" width="55" height="55">
+                    <div class="list-child">
+                    <h5>Mgek ImgBed</h5>
+                        <p>轻量开放接口图床服务</p>
+                        <a href="https://github.com/Landers1037/mgek_imgbed">源码地址</a>&emsp;<a href="https://github.com/Landers1037/mgek_imgbed.git">克隆下载</a>
+                    </div>
+                </div>
+                <div class="list-item" style="padding: 5px 0;text-align: center">
+                   <a style="border: none;font-weight: bold;font-size: 15px;color: #a0a0a0" href="/proj">查看更多</a>
+                </div>
+
+                <h3 style="font-size: 22px;margin-bottom: 0;padding-top: 0">时间线</h3>
+                <p>起始于2017，查看<a href="/timeline">Timeline</a></p>
+
+
+                <h3 style="font-size: 22px;margin-bottom: 0;padding-top: 0">联系方式</h3>
+                    <p style="margin-bottom: 5px">你可以通过以下方式联系我</p>
+                    <li class="indexli">邮件: <a href="mailto:liaorenj@gmail.com">Gmail</a></li>
+                    <li class="indexli">电报: <a href="https://t.me/Greatpipi">Telegram</a></li>
+                    <li class="indexli">回信: <a href="/reply">Renj Bot</a></li>
+                <h3 style="font-size: 22px;margin-bottom: 0;padding-top: 0">感谢来访</h3>
+                <p>希望这里的一切对你有所帮助，了解更多请参见<a href="/about">关于</a><br>
+                    这是我用来放松身心的<a href="/music">歌单</a>，如果喜欢这里可以<a href="/donate">赞助</a>我<br>
+                    如果你有任何想要说的话，通过上述联系方式找到我，或者给我<a href="/mes">留言</a>，
+                    <a href="/thanks">感谢</a>你的到来
+                </p>
+
+        </div>
+
+        <footer class="post-footer">
+            <div class="post-eof"></div>
+        </footer>
+    </div>
+
+{% endblock %}
+
+{% block bottom %}
+          <table>
+              <img style="margin: 0 auto;width: 250px;height: auto" src="/static/res/bottom.jpg">
+          </table>
+
+          <div id="ajax-zan">
+             <div id="zan" style="padding: 20px 20px">
+              <span>喜欢这里就点个赞吧!</span>
+                 <span class="fas fa-heart" style="color: #fe4c40;cursor: pointer;margin-left: 10px;-webkit-tap-highlight-color: transparent" onclick="zanwo()"></span>
+                 <span style="font-weight: bold;margin-left: 4px;margin-right: 16px" id="zanbox">{{ zancount }}</span>
+                 <span style="display: inline-block;width: 175px;vertical-align: middle;padding: 10px 0 4px">
+                     <img style="display: inline-block;margin-right: 4px;"
+                          src="https://img.shields.io/badge/likes-{{ zancount }}-crimson">
+                     <img style="display: inline-block"
+                          src="https://img.shields.io/badge/views-{{ views }}-blue">
+                 </span>
+             </div>
+          </div>
+{% endblock %}

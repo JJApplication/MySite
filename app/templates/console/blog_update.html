@@ -1,0 +1,121 @@
+{% extends "console/base.html" %}
+
+{% block style %}
+ <style>
+ #panel{
+     margin-top: 30px;
+     box-shadow: 0 0 10px #999999;
+     padding: 20px;
+     border-radius: 20px;
+ }
+ input{
+     font-size: 20px;
+     line-height: 1.5;
+     padding: 4px;
+     width: calc(100% - 150px);
+     outline: none;
+     border-radius: 10px;
+     border: 2px solid #888888;
+
+ }
+ textarea{
+     width: calc(100% - 150px);
+     border-radius: 10px;
+     padding: 4px;
+     border: 2px solid #888888;
+     outline: none;
+ }
+ #panel span{display: inline-block;width: 120px;}
+ .bt{
+     border: none;
+     display: block;
+     background-color: #4e8fff;
+     border-radius: 30px;
+     padding: 10px 40px;
+     color: white;
+     font-size: 26px;
+     margin: 40px auto 0;
+     cursor: pointer;
+     outline: none;
+     font-family:  'PT Sans Narrow', Helvetica, Arial, sans-serif;
+ }
+ a{
+     border: 2px solid #444444;
+     border-radius: 12px;
+     padding: 4px 10px;
+     margin-bottom: 30px;
+     display: inline-block;
+     font-size: 18px;
+     text-decoration: none;
+     color: #444444;
+
+ }
+ @media (max-width: 500px) {
+     #panel{padding: 20px 10px}
+     #panel span{width: 80px;font-size: 18px}
+     input{width: calc(100% - 100px)}
+     textarea{width: calc(100% - 100px)}
+     .bt{font-size: 20px}
+ }
+</style>
+
+{% endblock%}
+{% block body %}
+    <div id="panel" class="animated slideInDown">
+        <a href="/console">⇠  BACK</a>
+        <p style="margin-bottom: 20px">
+            <span>POST Title</span><input type="text" autocomplete="off" v-model="title"><br>
+        </p>
+        <p style="margin-bottom: 20px">
+            <span>POST Url</span><input type="text" autocomplete="off" v-model="url" title="只输入url表示更新md文件"><br>
+        </p>
+        <p style="margin-bottom: 20px">
+            <span>NEW Url</span><input type="text" autocomplete="off" v-model="url2" title="修改原本的url"><br>
+        </p>
+        <p style="margin-bottom: 20px">
+            <span>POST Content</span><textarea rows="6" v-model="content" title="修改原本的摘要文本"></textarea>
+        </p>
+        <p>
+            <span>X CODE</span><input type="text" autocomplete="off" style="color: orangered" v-model="code"><br>
+        </p>
+    <button class="bt" @click="update">UPDATE</button>
+    </div>
+
+{% block script %}
+    <!--vue-->
+    <script>
+        new Vue({
+            el: "#app",
+            data: function () {
+                return{
+                    title: '',
+                    url: '',
+                    url2: '',
+                    content: '',
+                    code: ''
+                }
+            },
+            methods: {
+                update(){
+                    let data = {
+                        "title": this.title,
+                        "url": this.url,
+                        "url2": this.url2,
+                        "content": this.content,
+                        "code": this.code
+                    };
+                    axios.post('/api/blog_update',data).then(res=>{
+                        if(res.data === "ok"){
+                            alert("ok");
+                        }else{
+                            alert("wrong");
+                        }
+                    }).catch(()=>{
+                        alert("wrong");
+                    });
+                }
+            }
+    });
+    </script>
+{% endblock %}
+{% endblock %}

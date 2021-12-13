@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Out Link</title>
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    *{font-family: 'Source Han Sans SC Medium','Source Han Sans SC','Microsoft YaHei','Helvetica Neue','Helvetica',
+'PingFang SC','Heiti SC','Heiti GB','黑体','Droid Sans',sans-serif;-webkit-tap-highlight-color: transparent}
+    *{margin: 0;padding: 0;font-weight: bold}
+    body{padding: 40px 20px;text-align: center}
+    h1{font-size: 2.8rem;font-family: "Fira Code","Source Han Sans SC Medium","Source Code Pro","Helvetica","Open Sans","Roboto","Droid Sans",sans-serif}
+    p{font-size: 1.2rem}
+    #banner{position: relative;width: 400px;height: 60px;margin: 0 auto;font-size: 1.4rem}
+    @media (max-width: 460px) {
+        #banner{width: 90%}
+    }
+    #banner span{animation: ani 4s linear 0s infinite;position: absolute;display: inline-block;width: 100px}
+    @keyframes ani {
+        0% {left: 0}
+        20%{left: 20%}
+        40%{left: 40%}
+        60%{left: 60%}
+        80%{left: 80%;opacity: .8}
+        100%{left: 100%;opacity: 0}
+    }
+    @-webkit-keyframes ani {
+        0% {left: 0}
+        20%{left: 20%}
+        40%{left: 40%}
+        60%{left: 60%}
+        80%{left: 80%;opacity: .8}
+        100%{left: 100%;opacity: 0}
+    }
+</style>
+<body>
+<h1>Mgek Link</h1>
+<div>
+    <p style="margin-top: 60px;margin-bottom: 30px;font-weight: bold">即将跳转至Mgek站点</p>
+    <p id="banner" style="margin-top: 30px"><span>🐌🐌🐌</span></p>
+    <p style="margin-top: 90px;font-size: .9rem;">外链跳转服务 Renj.io</p>
+</div>
+<script>
+    window.onload = function(){
+        setTimeout(()=>{
+        window.location.href = 'http://mgek.cc'
+        },4000);
+    }
+</script>
+</body>
+</html>

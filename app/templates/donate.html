@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta name="theme-color" content="#3c4359">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name=”x5-page-mode” content="app">
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link href="/static/res/apple-icon.png" rel="apple-touch-icon">
+    <link href="/static/css/donate.css" rel="stylesheet">
+    <title>捐赠页面</title>
+</head>
+<body>
+
+<div style="text-align: center;padding: 40px 0 0 0">
+    <h1>捐赠 Donate</h1>
+    <p>你的捐赠将是我前进的动力</p>
+</div>
+
+    <div class="container">
+{#        <td class="test"><img data-src="/static/res/alipay.webp" style="max-width: 100%"/></td>#}
+{#        <td class="test"><img data-src="/static/res/wechatpay.webp" style="max-width: 100%" /></td>#}
+        <label class="icon" onclick="alipay()"><span class="prefix alipay">支付宝</span><span class="after">Alipay</span></label>
+        <label class="icon" onclick="wechat()"><span class="prefix wechat">微信支付</span><span class="after">Wechat</span></label>
+        <div id="img_back" onclick="hide()">
+            <p id="mid" style="color: white;font-size: .9rem;">等待二维码加载...</p>
+            <img id="img" style="display: none">
+        </div>
+
+    </div>
+        <div style="text-align: center;margin-top: 50px;margin-left: 75px;margin-bottom: 30px">
+           <div  class="content">
+                <a href="/" style="text-decoration: none;"> <div class="planet">
+                    <div class="ring"></div>
+                    <div class="cover-ring"></div>
+                  <div class="spots">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                  </div>
+                </div></a>
+            <p style="font-size: 150%">thanks</p>
+            </div>
+
+        </div>
+<script>
+    let img_src = '';
+    let img = document.getElementById("img");
+    let back = document.getElementById("img_back");
+    let mid = document.getElementById("mid");
+    function alipay(){
+        img_src = '/static/res/alipay.jpg';
+        img.setAttribute("src",img_src);
+        setTimeout(()=>{
+            img.style.display = "block";
+            mid.style.display = "none";
+        },1200);
+        back.style.display = "block";
+    }
+    function wechat() {
+        img_src = '/static/res/wechatpay.jpg';
+        img.setAttribute("src",img_src);
+        setTimeout(()=>{
+            img.style.display = "block";
+            mid.style.display = "none";
+        },1200);
+        back.style.display = "block";
+    }
+    function hide() {
+        img.style.display = "none";
+        back.style.display = "none";
+        mid.style.display = "block";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+code{
+    font-family: "Consolas", "sans-serif", "Fira code";
+}
+h1{
+    font-size: 60px;
+    font-family: 'Century', 'Arial', 'Fira Code', monospace;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+/*li{*/
+    /*list-style: none;*/
+/*}*/
+.zan{
+    display: inline-block;
+    list-style: none;
+    position: relative;
+    bottom: 20px;
+    /*left: 50%;*/
+}
+.love{
+    display: inline-block;
+    font-size: 25px;
+    list-style: none;
+    position: relative;
+    bottom: 20px;
+    /*left: 45%;*/
+}
+.foot{
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.btn{
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+}
+input{
+    font-size: 25px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+input:hover{
+    background: #d83526;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+.biaoti{
+    text-decoration: none;
+    font-size: 30px;
+    font-family: 'Georgia','Century',"Fira Code";
+    margin-left: 10%;
+}
+.mainbox{
+    text-align: center;
+    margin-bottom: 50px;
+
+}
+.mainbox a{
+    text-decoration: none;
+    color: #378de5;
+    font-size: 18px;
+}
+pre{
+    text-align: left;
+}
+code{
+    border-radius: 10px;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+}
+.juzi{
+    font-size: 1.4rem;
+    font-family: 'Georgia',"Fira Code";
+}
+li a{
+    font-family: 'Georgia','Century','Fira Code';
+}
+
+.codeblock{
+    width: 60%;
+    margin: 0 auto;
+}
+@media (max-width: 600px){
+    .codeblock{
+        width: 80%;
+        margin: 0 auto;
+    }
+}

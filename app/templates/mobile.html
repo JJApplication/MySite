@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Renj.io</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#495a80">
+    <meta name="robots" content="all">
+    <meta name="author" content="landers,mail@renj.io">
+    <meta name="description" content="廖仁杰的主页,Landers的个人主页,我是廖仁杰这里是我记录生活,思考问题,总结经验的地方,欢迎来到我的个人主页">
+    <meta name="keywords" content="廖仁杰,Landers,个人主页,renj.io,landers1037,主页">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name=”x5-page-mode” content="app">
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link rel="apple-touch-icon" href="/static/res/apple-icon.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/res/apple-icon120.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/res/apple-icon152.png"/>
+    <link rel="stylesheet" href="/static/css/mobile.css">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous">
+</head>
+<body>
+<div class="full">
+    <div class="topbanner">
+        <div id="blur">
+            <h3>Landers</h3>
+        </div>
+        <span style="position: absolute;left: 12px;top: 10px;font-weight: bold;font-family: 'Open Sans', Calibri, Candara, Arial, sans-serif;font-size: .9em;color: #404040;border-radius: 20px;background-color: #f5f5f5;padding: 10px 16px;box-shadow: 0 0 2px #444444">
+        Renj.io
+        </span>
+        <div style="text-align: center;margin-bottom: 10px">
+            <img src="https://img.shields.io/github/followers/landers1037?style=social" style="margin-right: 5px">
+            <img src="https://img.shields.io/badge/views-{{ views }}-blue" style="margin-left: 5px">
+        </div>
+{#        <span id="contact">#}
+{#            <i class="fab fa-weixin" style="color: #18ab29;font-size: 20px" title="mail:mail@renj.io"></i>#}
+{#            商业合作#}
+{#        </span>#}
+        <i class="fab fa-envira" id="hide"></i>
+    </div>
+
+    <div class="content">
+        <div class="row">
+           <div class="unicol newblog animated fadeInLeft" onclick="window.location.href='/blog/newest'">
+               <div class="col">
+                   <span style="color: white">最新文章</span><span class="blog-text">NO.{{ blogindex }}</span>
+               </div>
+           </div>
+            <div class="unicol blog animated fadeInLeft" onclick="window.location.href='/blog'">
+               <div class="col">
+                   <span>博客</span><i class="fab fa-markdown" style="margin-left: 4px"></i>
+               </div>
+            </div>
+            <div class="unicol home animated slideInUp" onclick="window.location.href='/home'">
+               <div class="col">
+                   <span>主页 HOME</span>
+               </div>
+            </div>
+            <div class="unicol album animated slideInUp" onclick="window.location.href='/album'">
+               <div class="col">
+                   <span id="s1">相册</span><span id="s2" style="color: saddlebrown"> ALBUM</span>
+               </div>
+            </div>
+            <div class="unicol work animated slideInUp" onclick="window.location.href='http://mgek.cc'">
+               <div class="col">
+                   <span>Works</span><span style="font-weight: bold;margin-left: 10px;font-size: 13px">MGEK.CC</span>
+               </div>
+            </div>
+            <div class="unicol pop animated slideInUp" onclick="window.location.href='http://blog.renj.io'">
+               <div class="col">
+                   <span style="vertical-align: middle;font-weight: bold">TECH BLOG</span><span style="margin-left: 10px;"><img style="width: 50px;vertical-align: middle" src="/static/res/mgekbox.png"></span>
+               </div>
+            </div>
+             <div class="unicol github animated slideInUp" onclick="window.location.href='https://github.com/landers1037'">
+               <div class="col">
+                   <i class="fab fa-github" style="color: #9a9a9a;margin-right: 6px;font-size: 20px"></i><span style="color: #f5f5f5">GitHub</span>
+               </div>
+            </div>
+            <div class="unicol newmess animated slideInDown" onclick="window.location.href='/analysis'">
+               <div class="col">
+                   <i class="fab fa-elementor" style="margin-right: 6px;font-size: 20px"></i><span>站点分析</span>
+               </div>
+            </div>
+            <div class="unicol mess animated slideInDown" onclick="window.location.href='/mes'">
+               <div class="col">
+                   <i class="fab fa-creative-commons" style="margin-right: 6px;font-size: 20px"></i><span>留言板</span>
+               </div>
+            </div>
+            <div class="unicol bbb animated slideInUp" onclick="window.location.href='/play/bbb'">
+               <div class="col">
+                   <i><img src="/static/res/bbb.jpg"></i><span>Honkai Impact3</span>
+               </div>
+            </div>
+            <div class="unicol steam animated slideInUp" onclick="window.location.href='/play/steam'">
+               <div class="col">
+                   <i class="fab fa-steam" style="margin-right: 6px;font-size: 20px"></i><span style="color: white">Steam</span>
+               </div>
+            </div>
+            <div class="unicol res animated slideInUp" onclick="window.location.href='https://github.com/landers1037/pan'">
+               <div class="col">
+                   <i class="fab fa-dev" style="margin-right: 6px;font-size: 20px"></i><span>Mgek Pan</span>
+               </div>
+            </div>
+            <div class="unicol zan animated slideInUp" id="ajax-zan">
+               <div class="col" id="zan">
+                   <span id="like" onclick="zanwo()">喜欢(˶˚  ᗨ ˚˶)</span><span style="margin-left: 10px;color: red;font-size: 18px"><i class="fab fa-gratipay">&nbsp;</i></span><span id="zanbox">{{ count }}</span>
+               </div>
+            </div>
+            <div class="unicol about animated slideInUp" onclick="window.location.href='/about'">
+               <div class="col">
+                   <i class="fab fa-buffer" style="margin-right: 6px;font-size: 20px"></i><span>关于</span>
+               </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="bottom">
+        <p style="text-shadow: -2px 2px 4px #232323">风岚月歌的主页 Renj.io</p>
+        <div id="hidden-info" style="display: none;font-size: 17px;font-family: 'Open Sans', Calibri, Candara, Arial, sans-serif">
+            <p style="margin: 10px">
+            合作联系:
+                <span style="font-weight: bold;color: #1bffa5">mail@renj.io</span>
+            </p>
+            <p style="margin: 10px">
+            Github: <span style="font-weight: bold;color: #378de5">Landers1037</span>
+            </p>
+            <p style="margin: 10px">
+            Gitee: <span style="font-weight: bold;color: coral">Hotwaterman</span>
+            </p>
+            <p style="margin: 10px 0 30px 0">
+            Gmail: <span style="font-weight: bold;color: #88c1ff">liaorenj@gmail.com</span>
+            </p>
+        </div>
+
+        <span style="font-size: 12px;background-color: #ff7a95;color: white;padding: 8px 14px;border-radius: 26px">关注Landers 求你了(★ ω ★)</span><br>
+        <p style="font-size: 12px;color: #dfdfdf;margin-top: 16px">你会看到此页面是因为你正在使用移动设备访问本站点</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+<script src="/static/js/nocopy.js" defer></script>
+<script src="/static/js/zan.js" defer></script>
+<script>
+    var hide = document.getElementById("hide");
+    var group = document.getElementsByClassName("unicol");
+    var hidden_info = document.getElementById("hidden-info");
+    hide.onclick = function () {
+        for(let e of group){
+            if(e.style.display === "inline-block" || !e.style.display){
+                e.style.display = "none";
+                document.body.style.height = "100vh";
+                hidden_info.style.display = "block";
+            }else {
+                e.style.display = "inline-block";
+                document.body.style.height = "fit-content";
+                hidden_info.style.display = "none";
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+{#超出请求页面#}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="theme-color" content="#495a80">
+    <title>Sorry</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    body{
+        background: #eeeeee;
+        font-family: 'Fira Sans', sans-serif;
+        text-align: center;
+
+    }
+    .text-center{
+        text-align: center;
+    }
+    .text-muted {
+        color: #6c757d!important;
+    }
+    .head1{
+        font-size: 80px;
+        margin-top: 50px;
+        font-weight: 600!important;
+    }
+    .head2{
+        font-size: .9rem;
+        font-weight: lighter;
+    }
+    .txt1{
+        margin-top: 40px;
+    }
+    img{
+        max-width: 100%;
+    }
+    div{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    a{
+        display: block;
+        color: #6c757d;
+        text-decoration: none;
+        font-weight: 400;
+    }
+    a:hover{
+        transition: all 0.4s ease;
+        color: #222222;
+        text-decoration: none;
+    }
+</style>
+<body>
+
+    <h1 class="text-center text-muted head1">Sorry!</h1>
+    <p class="head2 text-center text-muted">there are too many requests</p>
+    <p class="txt1 text-center text-muted">你的操作过于频繁<br>
+    请等待片刻再访问本页面
+    </p>
+    <p class="text-center text-muted">Please wait a few minutes before you try again.</p>
+    <div class="text-center">
+        <img class="text-center" src="/static/res/error.png" width="60" height="60">
+    </div>
+    <a class="text-center" href="/">Landers1037</a>
+</body>
+</html>

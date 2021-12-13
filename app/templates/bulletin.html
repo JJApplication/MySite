@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta name="theme-color" content="#495a80">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name=”x5-page-mode” content=”app”>
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link href="/static/res/apple-icon.png" rel="apple-touch-icon">
+    <link href="/static/css/bulletin.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous">
+    <link href="/static/css/font/lato.css" rel="stylesheet">
+    <title>公告 | Landers</title>
+</head>
+<body>
+
+<div style="text-align: center">
+    <p class="title">公告板</p>
+    <div class="container">
+        <h4>本站标签</h4>
+        <a class="biaoqian fab fa-docker"> <b>docker</b></a>
+        <a class="biaoqian fas fa-flask"> Flask</a>
+        <a class="biaoqian fab fa-python"> <b>python</b></a>
+        <a class="biaoqian fab fa-linux"> <b>linux</b></a>
+        <a class="biaoqian fab fa-html5"> <b>Html5</b></a>
+        <a class="biaoqian fab fa-css3"> <b>css</b></a>
+        <a class="biaoqian fab fa-github"> <b>Github</b></a>
+        <a class="biaoqian fas fa-cloud"> Vultr</a>
+        <div id="scroll">
+            <span id="inner">Renj.io SSR面板服务关闭，文档转移至doc.mgek.cc，博客图片webp格式不兼容IOS设备，等待适配</span>
+        </div>
+        <h4 style="color: red;font-size: 20px;margin-top: 20px;margin-bottom: 10px">今天已经过去了</h4>
+        <div class="main">
+        <div class="data"></div>
+        <div class="line"></div>
+        <div class="inner"></div>
+        <img src="/static/res/apple-icon.png" style="width: 35px"></div>
+        <h4>现在已经是 </h4>
+        <div id="showTime"></div><br>
+        <div class="jiayou">加油!</div>
+    </div>
+    <a class="back" href="/">回到主页</a>
+</div>
+
+<script type="text/javascript">
+var date = new Date();
+var _width = (date.getHours() * 60 + date.getMinutes()) / 1440 * 100;
+if(_width>100){
+    _width = 100
+}
+
+if(_width>50){
+document.getElementsByClassName("inner")[0].style.background="#004c8a";
+}
+if(_width>85){
+document.getElementsByClassName("inner")[0].style.background="#cd4c49";
+}
+document.getElementsByClassName("inner")[0].style.width=_width+"%";
+document.getElementsByTagName("img")[0].style.left=-35+"px"+_width+"%";
+var _data = Math.floor(_width);
+document.getElementsByClassName("data")[0].innerText = _data+"%";
+document.getElementsByClassName("data")[0].style.left=5+"px"+_width+"%";
+
+</script>
+
+<script type = "text/javascript">
+    function timeShow(){
+    	var timeTemp = new Date();
+    	//使用toLocaleTimeString()方法生成时间格式
+    	var nowTime = timeTemp.toLocaleTimeString();
+    	var timeDiv = document.getElementById("showTime");
+    	timeDiv.innerHTML = nowTime;
+    }
+    window.setInterval(timeShow, 1000);
+</script>
+<script>
+    let len = 0.9;
+    let x = 0;
+    let inner = document.getElementById("inner");
+    function scroll() {
+        inner.style.left = (len * 100 - x) + '%';
+        x = x + 0.8;
+        if(inner.style.left === -80 + '%'){
+            inner.style.left = len * 100 +'%';
+            x = 0;
+        }
+    }
+    setInterval(scroll,100)
+</script>
+</body>
+</html>

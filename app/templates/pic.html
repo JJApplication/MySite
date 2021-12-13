@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+    <title>Album of Landers</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f7c873">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="album of landers,这里是我的个人在线相册,记录了那些美好的瞬间" />
+	<meta name="keywords" content="album,landers的相册,廖仁杰的相册,相册" />
+	<meta name="author" content="Landers" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name=”x5-page-mode” content="app">
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link href="/static/res/apple-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.5/dist/css/bootstrap.min.css" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc=" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/css/album/style.css">
+	<!-- Animate -->
+    <link href="/static/css/animate.css" rel="stylesheet">
+	</head>
+	<body>
+
+	<!-- END #fh5co-offcanvas -->
+	<header id="fh5co-header">
+		<div class="container-fluid">
+			<div class="row">
+				<a href="/album" class="fh5co-nav-toggle"><strong>BACK</strong></a>
+				<div class="col-lg-12 col-md-12 text-center">
+					<h1 id="fh5co-logo"><a href="/">Landers的相册</a></h1>
+				</div>
+            </div>
+		</div>
+
+	</header>
+	<!-- END #fh5co-header -->
+	<div class="container-fluid">
+		<div class="row fh5co-post-entry single-entry">
+			<article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+				<figure class="animated fadeInUp">
+					<img src="/static/res/album/images/{{ pid }}" alt="Image" class="img-responsive">
+				</figure>
+                <div class="animated fadeInUp" style="vertical-align: bottom">
+                    <img src="/static/res/album/images/info.svg" width="28">
+                    <span style="vertical-align: bottom;display: inline-block;height: 30px">{{ pid }}</span>
+                    <span style="padding: 0 20px"></span>
+                    <img src="/static/res/album/images/download.svg" width="28">
+                    <a href="/static/res/album/images/{{ pid }}" download="{{ pid }}" style="vertical-align: bottom;display: inline-block;height: 30px">原图</a>
+                </div>
+				<h2 class="fh5co-article-title animated fadeInUp" style="margin-top: 30px">I'm Landers.</h2>
+
+			</article>
+		</div>
+	</div>
+
+	<footer id="fh5co-footer">
+		<p style="margin-bottom: 10px"><small>&copy; 2017. <br> Made by <a href="/">Landers</a></small></p>
+	</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/jquery.waypoints.min.js" integrity="sha256-No2qtnsaWysoAu27rHmiqkupkqLr+cZ7mK14TYAEAYw=" crossorigin="anonymous"></script>
+	<!-- Main JS -->
+	</body>
+</html>
+

@@ -1,0 +1,34 @@
+{% extends './base/mod_base2.html' %}
+{% block title %}探索版块{% endblock %}
+
+{% block body %}
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">
+              <p style="font-size: 120%">学术版块</p>
+          </h2>
+      </header>
+      <div style="text-align: center">
+        <table style="width: 100%;table-layout: fixed">
+            <td style="text-align: center;border: none"><img src="/static/res/go/docker.png"><a href="/go/docker" class="fab fa-docker"><b>Docker技术</b></a></td>
+            <td style="text-align: center;border: none"><img src="/static/res/go/flask.png"><a href="/go/flask" class="fas fa-flask">Flask问题</a></td>
+            <td style="text-align: center;border: none"><img src="/static/res/go/python.png"><a href="/go/code" class="fab fa-python"><b>Code问题</b></a></td>
+        </table>
+        <table style="width: 100%">
+            <td style="text-align: center;border: none"><img src="/static/res/go/centos.png"><a href="/go/linux" class="fab fa-centos"><b>Linux问题</b></a></td>
+            <td style="text-align: center;border: none"><img src="/static/res/go/go.png"><a href="/go/golang" class="fab fa-github"><b>Go从零起步</b></a></td>
+            <td style="text-align: center;border: none"><img src="/static/res/go/algorithm.png"><a href="/go/algorithm" class="fas fa-code">算法数据结构</a></td>
+        </table>
+      </div>
+        <pre><code>$ rm -rf /*.unhappy</code></pre>
+        <p class="near"><span class="nearpro">近期问题</span></p>
+
+    <div class="post-body" itemprop="articleBody">
+            {% for p in problems[-5:]|list|reverse %}
+                <p style="margin-bottom: 0px;font-size: 18px"><b>主题: </b><span style="color: royalblue"><b>{{ p.theme }}</b></span></p>
+                 <li class="text" style="margin-bottom: 20px;margin-right: 15px">{{ p.text }}</li>
+            {% endfor %}
+
+        <div class="postmar"><br></div>
+    </div>
+
+{% endblock %}

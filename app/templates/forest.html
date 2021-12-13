@@ -1,0 +1,65 @@
+{% block head %}
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#50A387">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name=”x5-page-mode” content=”app”>
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/treeicon.png" rel="apple-touch-icon">
+    <link href="/static/res/treeicon.png" rel="icon shortcut">
+    <link href="/static/css/forest.css" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+
+<div>
+    &nbsp;&nbsp;
+    <a class="workButton" href="{{ url_for('mypage.minutes', num=30) }}">30 Minutes</a>
+    <a class="restButton" href="{{ url_for('mypage.hours', num=1) }}">1 Hour</a>
+    <a class="pomodoro" href="{{ url_for('mypage.hours', num=2) }}">2 Hours</a>
+    <a class="helpButton" id="help-btn">?</a>
+
+
+    <div class="usage" id="help-info">
+        <h3>一个简单的仿forest番茄钟</h3><br>
+        <p><b>你可以选择集中精力的时间：</b><br><br>
+          <br>
+          目前支持30min,1h,2h。
+        </p>
+    </div>
+</div>
+
+<div class="tree">
+    <div class="tplus"><img class="t" src="/static/res/tree/1.png" id="t"></div>
+</div>
+
+<div class="timer">
+    <p id="time"></p>
+</div>
+
+<div class="quote">
+    <p id="quote">Copyright©<a href="/">Landers</a></p>
+	<i id="author"></i>
+</div>
+
+<div class="footer">
+    <a href="/" >主页</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/timer.js') }}"></script>
+<script>
+  var Seconds = {{ num }};
+</script>
+
+
+
+<script src="/static/js/nocopy.js" async></script>
+
+{% endblock %}

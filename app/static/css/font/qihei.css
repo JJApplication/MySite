@@ -1,0 +1,5 @@
+@font-face {
+    font-display: swap;
+    font-family: 'qihei';
+    src: url("/static/res/font/qihei.woff2") format('woff');
+}

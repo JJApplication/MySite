@@ -1,0 +1,69 @@
+{% extends "base/mod_base3.html" %}
+
+{% block body %}
+    <header class="post-header">
+        <h2 class="post-title" style="margin: 0 0 20px" itemprop="name headline">
+            <p style="font-size: 30px">Hello,this's my page</p>
+        </h2>
+    </header>
+
+    <div class="post-body" itemprop="articleBody">
+            <p>I'm Landers, from HUST(HuaZhong University of S&T)🌎<br>Here is where I record my learning, relax and enjoy myself, thanks for coming！</p>
+
+        <h3 style="font-size: 20px;margin-bottom: 2px">I'm a xianyu</h3>
+            <p>People in HUST are outstanding, I am just an ordinary developer, like <a href="https://baike.baidu.com/item/%E5%92%B8%E9%B1%BC/7389?fr=aladdin">咸鱼</a><br>
+               I'm now majoring in EIC, and the CS is my final target, as LunXun said:"There is no shortcut to success, only continuous hard work".<br>
+               Only if you like what you do，you can have a yearning life，come on！</p>
+
+        <h3 style="font-size: 20px;margin-bottom: 2px">What' here</h3>
+          <p>My own blog  <a href="/blog">Blog</a>, My album  <a href="/album">Album</a><br>
+             My <a href="/thoughts">throughts</a>, some strange <a href="/go">problems</a><br>
+             A ssr crawler <a href="/ssr">SSBoard</a>, <a href="/forest">Forest</a><br>
+             Docs of Mgek. <a href="/docs">Docs</a>, My <a href="http://blog.renj.io">Tech Blog</a><br>
+             Here is my <a href="http://me.renj.io">resume</a>, take 3 mins to know me.</p>
+
+        <h3 style="font-size: 20px;margin-bottom: 2px">Other sites</h3>
+            <p style="margin-bottom: 5px">you can also find me here</p>
+                <li class="indexli">知乎: <a href="https://www.zhihu.com/people/49c7754c0557f6e5db42cd8588c940ca">zhihu</a></li>
+                <li class="indexli">Github: <a href="http://github.com/landers1037">Github</a></li>
+                <li class="indexli">Gitee: <a href="https://gitee.com/hotwaterman">Gitee</a></li>
+                <li class="indexli">掘金: <a href="http://juejin.im/user/5d540cffe51d45621512ad50">Juejin</a></li>
+                <li class="indexli">开源中国: <a href="https://my.oschina.net/u/4172517">osChina</a></li>
+
+        <h3 style="font-size: 20px;margin-bottom: 2px">Timeline</h3>
+        <p>Since 2017, see my <a href="/timeline">Timeline</a>.</p>
+
+        <h3 style="font-size: 20px;margin-bottom: 2px">Contact me</h3>
+            <p style="margin-bottom: 5px">contact me through following ways</p>
+            <li class="indexli">mail: <a href="mailto:liaorenj@gmail.com">Gmail</a></li>
+            <li class="indexli">tele: <a href="https://t.me/Greatpipi">Telegram</a></li>
+
+        <h3 style="font-size: 20px;margin-bottom: 2px">Thanks</h3>
+            <p class="introduce">I hope everything here will help you, want to konw more, check <a href="/about">about</a>.<br>
+                Music makes me at ease, here's my <a href="/music">musiclist</a>, check it. If you like here, you can <a href="/donate">donate</a> me.<br>
+                If you have anything want to say, contact through the ways above, or leave a <a href="/mes">message</a>. <a href="/thanks">Thanks</a> for comming!</p>
+    </div>
+
+        <footer class="post-footer">
+            <div class="post-eof"></div>
+        </footer>
+{% endblock %}
+
+{% block bottom %}
+          <table>
+              <img style="margin: 0 auto;width: 250px;height: auto" src="/static/res/bottom.jpg">
+          </table>
+          <div id="ajax-zan">
+             <div id="zan" style="padding: 20px 20px">
+              <span>Please give me a thumb-up!</span>
+                 <span class="fas fa-heart" style="color: #fe4c40;cursor: pointer;margin-left: 10px;-webkit-tap-highlight-color: transparent" onclick="zanwo()"></span>
+                 <span style="font-weight: bold;margin-left: 4px;margin-right: 16px" id="zanbox">{{ zan }}</span>
+                 <span style="display: inline-block;width: 175px;vertical-align: middle;padding: 10px 0 4px">
+                     <img style="display: inline-block;margin-right: 4px;"
+                          src="https://img.shields.io/badge/likes-{{ zan }}-crimson">
+                     <img style="display: inline-block"
+                          src="https://img.shields.io/badge/views-{{ views }}-blue">
+                 </span>
+             </div>
+          </div>
+{% endblock %}

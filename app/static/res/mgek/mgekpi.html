@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="theme-color" content="crimson">
+    <meta name="msvalidate.01" content="true">
+
+    <link href="/static/res/favicon.png" rel="icon">
+    <link href="/static/css/font/lato.css" rel="stylesheet">
+    <link href="/static/css/font/bad.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/highlight.js/9.13.1/styles/atom-one-dark.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="/static/css/mgekwiki.css">
+
+  <title>Doc | Landers</title>
+
+</head>
+
+<body>
+
+  <div>
+
+    <div id="box" class="custom-logo-site-title animated fadeInDown">
+      <a href="/" class="brand" rel="start">
+        <span class="site-title">Landers1037</span>
+      </a>
+    </div>
+        <h1 class="site-subtitle animated fadeInDown">河汉清且浅 相去复几许</h1>
+        <span class="top"><a href="/docs/"><p>Mgek</p></a></span>
+  </div>
+
+
+      <div class="main-inner">
+        <div class="content-wrap">
+
+          <div id="content" class="content">
+
+  <div class="post-block">
+
+      <div class="post-header">
+          <p class="post-title" itemprop="name headline"><span style="color: crimson">Mgekpi</span>文档</p>
+      </div>
+
+    <div class="post-body">
+	    <h1>Mgekpi是一个命令行下载工具</h1>
+
+        <h3>下载</h3>
+        <pre><code class='language-shell' lang='shell'>$ git clone https://github.com/Landers1037/Mgekpi.git</code></pre>
+        <h3>使用</h3>
+        <pre><code class='language-shell' lang='shell'>
+cd linux-ver
+$ sudo chmod +x mgekpi.py
+$ ./mgekpi.py
+#####或者#####
+cd linux-ver
+$ sudo chmod +x mgekpi
+$ ./mgekpi
+        </code></pre>
+        <p>如果你是windows系统</p>
+        <pre><code class='language-shell' lang='shell'>
+cd win-ver
+$ python mgekpi.py
+#####或者#####
+$ mgekpi.exe
+        </code></pre>
+
+        <p><font color=slate>linux和windows都提供了编译完成的二进制文件</font></p>
+        <h3>命令</h3>
+        <pre><code class='language-shell' lang='shell'>&gt; -h</code></pre>
+        <pre><code class='language-shell' lang='shell'>|使用帮助 输入-h查看全部命令
+        |mgekpi 支持aria2,you-get,curl模式
+        |输入aria  进入aria2单任务下载模式,添加链接任务|
+        |输入aria2 进入aria2后台服务模式,aria2运行于后台,后台多任务下载，输入show查看任务
+        |输入get   进入you-get下载模式,支持下载音乐，视频，短视频资源
+        |输入exit  退出下载模式，进入主界面
+        |输入kill  退出所有的aria2下载任务，关闭aria2服务，退出程序
+        </code></pre>
+        <p>打开使用帮助</p>
+
+        <pre><code class='language-shell' lang='shell'>&gt;aria
+    进入aria2命令行下载模式(单任务下载)
+    &amp; mgek|A
+        </code></pre>
+        <p>输入aria即可进入使用aria2进行单任务下载</p>
+        <p>单任务模式下，输入-c打开配置</p>
+        <pre><code class='language-shell' lang='shell'>&amp; mgek|A -c
+        1.dht监听端口
+        2.bt监听端口
+        3.最大线程数
+        4.允许线程数
+        5.同时下载文件数
+        6.是否断点续传
+        7.最大下载速率(0为不限制)
+        8.后台保护进程
+
+        输入序号修改
+        </code></pre>
+        <pre><code class='language-shell' lang='shell'>&gt;aria2
+    进入aria2服务下载模式(后台)
+    aria2
+        </code></pre>
+        <p>输入aria2即可进入使用aria2后台服务下载多任务</p>
+        <p>后台服务模式下，输入-s或show，查看下载任务</p>
+        <pre><code class='language-shell' lang='shell'>aria2 show
+    没有进行的任务</code></pre>
+        <pre><code class='language-shell' lang='shell'>&gt;get
+    进入you-get下载模式
+    &amp; mgek|G
+        </code></pre>
+        <p>输入get使用you-get下载文件</p>
+        <pre><code class='language-shell' lang='shell'>&amp; mgek|G -o E:\download url</code></pre>
+        <p>使用-o选择下载路径</p>
+        <pre><code class='language-shell' lang='shell'>&amp; exit</code></pre>
+        <p>输入exit退出下载模式</p>
+        <pre><code class='language-shell' lang='shell'>&gt;kill
+    关闭所有aria2c进程
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;关闭完成
+    感谢使用
+        </code></pre>
+        <p>输入kill关闭后台aria2服务，退出程序</p>
+
+        <p class="zhu"><a href="/">🍜</a>&emsp;由Landers编写</p>
+        <div class="postmar"></div>
+    </div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+
+    <footer class="footer">
+        <div class="footbanner">
+            <a href="/">返回主页</a>
+            <span class="split">|</span>
+            <a href="/status/">站点信息</a>
+            <span class="split">|</span>
+            <a href="/copyright/">版权声明</a>
+            <span class="split">|</span>
+            <a href="/public/">公共主页</a>
+        </div>
+      <div class="footer-inner">
+        <div class="copyright">
+            <span style="color: dimgrey" class="author" itemprop="copyrightHolder">©Landers | 华中科技大学</span>
+        </div>
+
+      </div>
+    </footer>
+
+
+  <script src="/static/js/nocopy.js"></script>
+  <script src="/static/js/wiki.js"></script>
+</body>
+</html>

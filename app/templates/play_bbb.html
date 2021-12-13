@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Honkai Impact3</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#495a80">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name=”x5-page-mode” content="app">
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link href="/static/res/apple-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.0/dist/css/bootstrap.min.css" integrity="sha256-JnRsKkBFuGrwCYmwj8aV3brs5M16CrcAkg7Z+hkObZ8=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7.9.3/dist/video.min.js" integrity="sha256-MCVEzQgWsXEsXzD9DJTpKQJoQzUqRfbURqkp+mF95HI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.9.3/dist/video-js.min.css" integrity="sha256-/fXfq3QrnWyMYmF0zX6ImdI1DTraNCAq1vPofa2rs2w=" crossorigin="anonymous">
+<style>
+.topbanner{background: url("/static/res/home/bbb/bh3.jpg") no-repeat center center;background-size: cover;height: 360px;padding: 20px 0;transition: all 0.3s ease}
+.topbanner h3{text-align: center;font-size: 60px;font-weight: bold;color: white;text-shadow: 2px 2px 5px #333333;margin-top: 140px;transition: all 0.3s ease}
+@media (max-width: 550px) {
+  .topbanner{height: 280px;transition: all 0.3s ease}
+  .topbanner h3{font-size: 40px;margin-top: 80px;transition: all 0.3s ease}
+}
+.showbanner{padding: 10px 10px;width: 80%;position: relative;margin: 0 auto}
+.myid{height: 300px;width: 100%}
+#myid{cursor:pointer;background: url("/static/res/home/bbb/show.jpg") no-repeat center center transparent;background-size: cover;height: inherit;width: 60%;vertical-align: middle;box-shadow: -5px 5px 5px 2px #404040;transition: all 0.3s ease}
+#myid:hover{height: 320px;transition: all 0.4s ease}
+.myid span{vertical-align: middle;margin-left: 20px;font-size: 30px;font-weight: bold;color: #1a1a1a}
+.myid span i{color: #378de5}
+@media (max-width: 700px) {
+    #myid{width: 100%;height: 200px}
+    .myid span{margin-left: 0;display: block;text-align: center}
+}
+@media (max-width: 550px) {
+    .showbanner{width: 100%}
+    #myid{width: 100%;height: 200px}
+    .myid span{margin-left: 0;display: block;text-align: center}
+}
+    .video{margin-top:40px;padding: 10px 10px;border-left: 2px solid #404040;border-right: 2px solid #404040;background-color: #f8f8f8}
+    .video p.danan{font-weight: bold;font-size: 25px;color: #378de5;cursor: pointer}
+    .video .col-md-6 p{font-weight: bold;color: #fe4c40}
+    .video .col-md-6{margin-bottom: 10px}
+
+    .bottombanner{padding: 20px 10px;}
+    .bottombanner img{width: 120px;display: block;margin: 0 auto;border-radius: 20px}
+    .bottombanner h4{text-align: center;font-weight: bold;margin-top: 6px;font-size: 18px}
+    .bottombanner a{border-radius: 15px;font-size: 16px;padding: 4px 10px;position: absolute;left: 50%;transform: translateX(-50%);text-decoration: none}
+</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<div class="topbanner">
+<h3>Honkai Impact <span style="color: #ff9900">3</span></h3>
+</div>
+<div class="showbanner">
+    <div class="myid">
+        <label id="myid"></label><span>UID:<i>16884025</i></span>
+    </div>
+    <div class="video">
+        <p class="danan">档案</p>
+        <div class="row">
+            <div class="col-md-6">
+                    <video id="play1" class="video-js vjs-default-skin vjs-fluid" controls preload="none" poster="/static/res/home/bbb/post-mhq.jpg">
+                        <source src="http://file.mgek.cc/videos/bbb/1.mp4" type="video/mp4">
+                    </video>
+                <p>SS级赫菲斯托斯</p>
+            </div>
+            <div class="col-md-6">
+                    <video id="play2" class="video-js vjs-default-skin vjs-fluid" controls preload="none" poster="/static/res/home/bbb/post2.jpg">
+                        <source src="http://file.mgek.cc/videos/bbb/2.mp4" type="video/mp4">
+                    </video>
+                <p>SSS上仙晋升</p>
+            </div>
+            <div class="col-md-6">
+                    <video id="play3" class="video-js vjs-default-skin vjs-fluid" controls preload="none" poster="/static/res/home/bbb/post.jpg">
+                        <source src="http://file.mgek.cc/videos/bbb/3.mp4" type="video/mp4">
+                    </video>
+                <p>猎杀之章</p>
+            </div>
+            <div class="col-md-6">
+                    <video id="play4" class="video-js vjs-default-skin vjs-fluid" controls preload="none" poster="/static/res/home/bbb/post.jpg">
+                        <source src="http://file.mgek.cc/videos/bbb/4.mp4" type="video/mp4">
+                    </video>
+                <p>SS级阿湿波</p>
+            </div>
+             <div class="col-md-6">
+                    <video id="play5" class="video-js vjs-default-skin vjs-fluid" controls preload="none" poster="/static/res/home/bbb/post-jf.jpg">
+                        <source src="http://file.mgek.cc/videos/bbb/5.mp4" type="video/mp4">
+                    </video>
+                <p>SS级教父</p>
+            </div>
+            <div class="col-md-6">
+                    <video id="play6" class="video-js vjs-default-skin vjs-fluid" controls preload="none" poster="/static/res/home/bbb/post-ppm.jpg">
+                        <source src="http://file.mgek.cc/videos/bbb/6.mp4" type="video/mp4">
+                    </video>
+                <p>SS级皮皮马</p>
+            </div>
+            <div class="col-md-6">
+                    <video id="play7" class="video-js vjs-default-skin vjs-fluid" controls preload="none" poster="/static/res/home/bbb/post-c.jpg">
+                        <source src="http://file.mgek.cc/videos/bbb/7.mp4" type="video/mp4">
+                    </video>
+                <p>家园补给</p>
+            </div>
+            <div class="col-md-6">
+                    <video id="play8" class="video-js vjs-default-skin vjs-fluid" controls preload="none" poster="/static/res/home/bbb/post-jfjt.jpg">
+                        <source src="http://file.mgek.cc/videos/bbb/8.mp4" type="video/mp4">
+                    </video>
+                <p>SS教父军团</p>
+            </div>
+            <div class="col-md-6">
+                    <video id="play9" class="video-js vjs-default-skin vjs-fluid" controls preload="none" poster="/static/res/home/bbb/post-hmde.jpg">
+                        <source src="http://file.mgek.cc/videos/bbb/9.mp4" type="video/mp4">
+                    </video>
+                <p>SS海胖子</p>
+            </div>
+            <div class="col-md-6">
+                    <video id="play10" class="video-js vjs-default-skin vjs-fluid" controls preload="none" poster="/static/res/home/bbb/post-lt.jpg">
+                        <source src="http://file.mgek.cc/videos/bbb/10.mp4" type="video/mp4">
+                    </video>
+                <p>SS冰箱</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottombanner">
+    <p class="text-center" style="margin-bottom: 10px">🌼</p>
+    <img src="/static/res/home/bbb/bot.jpg">
+    <h4>为世界上所有的美好而战</h4>
+{#    <a href="bh3rd://start" class="alert-success">启动游戏</a>#}
+    <p class="text-center text-danger" style="margin: 40px 0 0 0">©Landers的游戏</p>
+</div>
+
+  <script src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/static/js/nocopy.js" async></script>
+  <script>
+      var player1 = videojs('play1',{
+          control: true,
+          autoplay: false
+      });
+      var player2 = videojs('play2',{
+          control: true,
+          autoplay: false
+      });
+      var player3 = videojs('play3',{
+          control: true,
+          autoplay: false
+      });
+       var player4 = videojs('play4',{
+          control: true,
+          autoplay: false
+      });
+      var player5 = videojs('play5',{
+          control: true,
+          autoplay: false
+      });
+      var player6 = videojs('play6',{
+          control: true,
+          autoplay: false
+      });
+      var player7 = videojs('play7',{
+          control: true,
+          autoplay: false
+      });
+       var player8 = videojs('play8',{
+          control: true,
+          autoplay: false
+      });
+      var player9 = videojs('play9',{
+          control: true,
+          autoplay: false
+      });
+      var player10 = videojs('play10',{
+          control: true,
+          autoplay: false
+      });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!--底部页面的base页面-->
+<!DOCTYPE html>
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ title|default }}{% endblock title %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <meta name="theme-color" content="#495a80">
+    <meta name="msvalidate.01" content="true">
+    <meta name="description" content="廖仁杰的个人主页,这里是Landers的主页,在这里发现更多乐趣">
+    <meta name="keywords" content="廖仁杰,Landers,个人主页,renj.io">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="x5-page-mode" content="app">
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link rel="apple-touch-icon" href="/static/res/apple-icon.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/res/apple-icon120.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/res/apple-icon152.png"/>
+
+    <link rel="stylesheet" href="/static/css/basepage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous">
+    <link href="/static/css/font/lato.css" rel="stylesheet">
+    {% block head %}
+
+    {% endblock head %}
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+  };
+</script>
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .use-motion .post-block,
+  .use-motion .post-header,
+  .use-motion .post-body{ opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+
+  </style>
+</noscript>
+
+</head>
+<style>
+    ::-webkit-scrollbar{
+        width: 10px;
+        height: 10px;
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: #bab4bd;
+        height: 50px;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+    }
+</style>
+
+    {% block style %}
+
+    {% endblock style %}
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-home">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner">
+          <div class="site-brand-wrapper">
+          <div class="site-meta">
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
+                <span class="logo-line-before"><i></i></span>
+                <span class="site-title">Landers1037</span>
+                <span class="logo-line-after"><i></i></span>
+              </a>
+            </div>
+                <code class="headcode site-subtitle">Never Debug</code>
+                <h1 class="site-subtitle" itemprop="description">河汉清且浅 相去复几许</h1>
+            </div>
+
+          <div class="site-nav-toggle">
+            <button aria-label="切换导航栏">
+              <span class="btn-bar"></span>
+              <span class="btn-bar"></span>
+              <span class="btn-bar"></span>
+            </button>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+            <ul id="menu" class="menu">
+                  <li class="menu-item menu-item-home">
+            <a href="/" rel="noopener"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>主页</a>
+          </li>
+                  <li class="menu-item menu-item-tags">
+            <a href="/bulletin" rel="section"><i class="menu-item-icon fa fa-fw fa-bullhorn"></i> <br>公告</a>
+          </li>
+                  <li class="menu-item menu-item-wiki">
+            <a href="/blog" rel="noopener"><i class="menu-item-icon fa fa-fw fa-tree"></i> <br>博客</a>
+          </li>
+                  <li class="menu-item menu-item-me">
+            <a href="/album" rel="section"><i class="menu-item-icon fa fa-fw fa-photo-video"></i> <br>相册</a>
+          </li>
+                  <li class="menu-item menu-item-me">
+            <a href="/proj" rel="section"><i class="menu-item-icon fa fa-fw fa-coffee"></i> <br>项目</a>
+          </li>
+                  <li class="menu-item menu-item-box">
+            <a href="/mes" rel="noopener"><i class="menu-item-icon fa fa-fw fa-map-signs"></i> <br>留言</a>
+          </li>
+                  <li class="menu-item menu-item-about">
+            <a href="/thoughts" rel="section"><i class="menu-item-icon fa fa-fw fa-heart"></i> <br>想法</a>
+          </li>
+                  <li class="menu-item menu-item-about">
+            <a href="/go" rel="section"><i class="menu-item-icon fa fa-fw fa-graduation-cap"></i> <br>学术</a>
+          </li>
+                <li class="menu-item menu-item-info">
+            <a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-leaf"></i> <br>关于</a>
+          </li>
+                <li class="menu-item menu-item-donate">
+            <a href="/donate" rel="section"><i class="menu-item-icon fa fa-fw fa-donate"></i> <br>捐赠</a>
+          </li>
+            </ul>
+        </nav>
+            {% block mes %}
+
+            {% endblock %}
+        </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            <section id="posts" class="posts-expand">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+                  <div class="post-block">
+                    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                      <meta itemprop="name" content="Landers">
+                      <meta itemprop="description" content>
+                    </span>
+
+                    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                      <meta itemprop="name" content="Landers1037">
+                    </span>
+
+    {% block body %}
+
+    {% endblock body %}
+                   </div>
+               </article>
+            </section>
+           </div>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="footbanner">
+            <a href="/en">English</a>
+            <span class="split">|</span>
+            <a href="/status">站点信息</a>
+            <span class="split">|</span>
+            <a href="/copyright">版权声明</a>
+            <span class="split">|</span>
+            <a href="/public">公共主页</a>
+        </div>
+
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear"></span>
+            <span style="color: dimgrey" class="author" itemprop="copyrightHolder">Landers | Renj.io</span>
+        </div>
+      </div>
+    </footer>
+
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+  </div>
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.2/velocity.min.js" integrity="sha256-XOkvENCTDgs9zjRnsRHbQijsQp45RKAbb8wsMR3VcsQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.2/velocity.ui.min.js" integrity="sha256-wDASuom6tG2Y97FEJuZU8GWLOpLqeR4WgyOt42cCX9g=" crossorigin="anonymous"></script>
+    <script src="/static/js/home/utils.js?v=7.1.1" defer></script>
+    <script src="/static/js/home/motion.js?v=7.1.1" defer></script>
+    <script src="/static/js/home/next-boot.js?v=7.1.1" defer></script>
+    <script src="/static/js/nocopy.js" defer></script>
+
+    {% block script %}
+
+    {% endblock script %}
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends './base/mod_base1.html' %}
+{% block title %}Mes | 留言板{% endblock title %}
+
+{% block mes %}
+    <div style="text-align: center">
+        <form method="post">
+            <p class="tishi"><a style="border: none;color: rebeccapurple" href="/login">Flybox</a> | 留下想说的话</p>
+            <input type="text" name="mess" title="留下想说的话" autocomplete="off" required style="padding: 4px 6px">
+            <input class="btn" type="submit" name="submit" value="发布">
+        </form>
+    </div>
+{% endblock %}
+
+{% block body %}
+      <header class="post-header">
+          <h2 class="post-title" itemprop="name headline">
+              <p style="font-size: 120%">最近留言</p>
+          </h2>
+      </header>
+
+    <div class="post-body" itemprop="articleBody">
+            {% for mes in mess %}
+                 <li>{{ mes.mess }}</li>
+            {% endfor %}
+
+        <div class="postmar"><br></div>
+    </div>
+{% endblock body %}

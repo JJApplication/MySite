@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="theme-color" content="crimson">
+    <meta name="msvalidate.01" content="true">
+
+    <link href="/static/res/favicon.png" rel="icon">
+    <link href="/static/css/font/lato.css" rel="stylesheet">
+    <link href="/static/css/font/bad.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.9/styles/atom-one-light.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="/static/css/mgekwiki.css">
+  <title>Doc | Landers</title>
+
+</head>
+
+<body>
+
+  <div>
+
+    <div id="box" class="custom-logo-site-title animated fadeInDown">
+      <a href="/" class="brand" rel="start">
+        <span class="site-title">Landers1037</span>
+      </a>
+    </div>
+        <h1 class="site-subtitle animated fadeInDown">河汉清且浅 相去复几许</h1>
+        <span class="top"><a href="/docs/"><p>Mgek</p></a></span>
+  </div>
+
+
+      <div class="main-inner">
+        <div class="content-wrap">
+
+          <div id="content" class="content">
+
+  <div class="post-block">
+
+      <div class="post-header">
+          <p class="post-title" itemprop="name headline"><span style="color: crimson">Mgektone</span>文档</p>
+      </div>
+
+    <div class="post-body">
+        <h1 style="text-align:center">Mgektone是一个辅助arduino音符数组生成脚本</h1>
+
+        <h4>arduino常量定义</h4>
+        <pre><code class='language-c' lang='c'>
+#define NOTE_D0 -1
+#define NOTE_D1 294
+#define NOTE_D2 330
+#define NOTE_D3 350
+#define NOTE_D4 393
+#define NOTE_D5 441
+#define NOTE_D6 495
+#define NOTE_D7 556
+
+#define NOTE_DL1 147
+#define NOTE_DL2 165
+#define NOTE_DL3 175
+#define NOTE_DL4 196
+#define NOTE_DL5 221
+#define NOTE_DL6 248
+#define NOTE_DL7 278
+
+#define NOTE_DH1 589
+#define NOTE_DH2 661
+#define NOTE_DH3 700
+#define NOTE_DH4 786
+#define NOTE_DH5 882
+#define NOTE_DH6 990
+#define NOTE_DH7 112
+        </code></pre>
+
+        <h4>python处理脚本</h4>
+        <pre><code class='language-python' lang='python'>
+import json
+import os
+
+tone = []
+def toneGen(file):
+    print(&#39;音符数组生成&#39;)
+    if file:
+        with open(file,&#39;r&#39;,encoding=&#39;utf8&#39;) as f:
+            datas= f.readline()
+            for data in datas:
+               if data == &#39;0&#39;:
+                   tone.append(&#39;NOTE_D0&#39;)
+               elif data == &#39;1&#39;:
+                   tone.append(&#39;NOTE_D1&#39;)
+               elif data == &#39;2&#39;:
+                   tone.append(&#39;NOTE_D2&#39;)
+               elif data == &#39;3&#39;:
+                   tone.append(&#39;NOTE_D3&#39;)
+               elif data == &#39;4&#39;:
+                   tone.append(&#39;NOTE_D4&#39;)
+               elif data == &#39;5&#39;:
+                   tone.append(&#39;NOTE_D5&#39;)
+               elif data == &#39;6&#39;:
+                   tone.append(&#39;NOTE_D6&#39;)
+               elif data == &#39;7&#39;:
+                   tone.append(&#39;NOTE_D7&#39;)
+               elif data == &#39;l1&#39;:
+                   tone.append(&#39;NOTE_DL1&#39;)
+               elif data == &#39;l2&#39;:
+                   tone.append(&#39;NOTE_DL2&#39;)
+               elif data == &#39;l3&#39;:
+                   tone.append(&#39;NOTE_DL3&#39;)
+               elif data == &#39;l4&#39;:
+                   tone.append(&#39;NOTE_DL4&#39;)
+               elif data == &#39;l5&#39;:
+                   tone.append(&#39;NOTE_DL5&#39;)
+               elif data == &#39;l6&#39;:
+                   tone.append(&#39;NOTE_DL6&#39;)
+               elif data == &#39;l7&#39;:
+                   tone.append(&#39;NOTE_DL7&#39;)
+               elif data == &#39;h1&#39;:
+                   tone.append(&#39;NOTE_DH1&#39;)
+               elif data == &#39;h2&#39;:
+                   tone.append(&#39;NOTE_DH2&#39;)
+               elif data == &#39;h3&#39;:
+                   tone.append(&#39;NOTE_DH3&#39;)
+               elif data == &#39;h4&#39;:
+                   tone.append(&#39;NOTE_DH4&#39;)
+               elif data == &#39;h5&#39;:
+                   tone.append(&#39;NOTE_DH5&#39;)
+               elif data == &#39;h6&#39;:
+                   tone.append(&#39;NOTE_DH6&#39;)
+               elif data == &#39;h7&#39;:
+                   tone.append(&#39;NOTE_DH7&#39;)
+    else:
+        print(&#39;需要传入文件&#39;)
+
+def format():
+    formattone = &#39;&#39;
+    for tonelist in tone:
+        formattone = formattone +&#39;,&#39;+ tonelist
+    formattone = formattone[1:]
+    return formattone
+
+if __name__==&#39;__main__&#39;:
+    filename = input(&#39;音符文件名\n&#39;)
+    toneGen(filename)
+    print(format())
+        </code></pre>
+        <h4>使用</h4>
+        <p>将乐谱按照高低音写成文档放在文本文件里，如</p>
+        <pre><code class='language-xml' lang='xml'>1 2 3 4 5 6 7 l1 l2 h3 h4</code></pre>
+        <p>低音为l，高音为h</p>
+        <p>将文本文件保存后命名为xxx.txt</p>
+        <p>命令行执行</p>
+        <pre><code class='language-shell' lang='shell'>$ python mgektone.py xxx.txt</code></pre>
+
+
+        <p class="zhu"><a href="/">🍜</a>&emsp;由Landers编写</p>
+        <div class="postmar"></div>
+    </div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+
+    <footer class="footer">
+        <div class="footbanner">
+            <a href="/">返回主页</a>
+            <span class="split">|</span>
+            <a href="/status/">站点信息</a>
+            <span class="split">|</span>
+            <a href="/copyright/">版权声明</a>
+            <span class="split">|</span>
+            <a href="/public/">公共主页</a>
+        </div>
+      <div class="footer-inner">
+        <div class="copyright">
+            <span style="color: dimgrey" class="author" itemprop="copyrightHolder">©Landers | 华中科技大学</span>
+        </div>
+
+      </div>
+    </footer>
+
+
+  <script src="/static/js/nocopy.js"></script>
+  <script src="/static/js/wiki.js"></script>
+</body>
+</html>

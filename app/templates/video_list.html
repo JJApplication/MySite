@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Videos of Landers</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f7c873">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="video of landers,这是我的个人视频相册" />
+	<meta name="keywords" content="album,videos,廖仁杰,廖仁杰的相册" />
+	<meta name="author" content="Landers" />
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-title" content="Renj.io">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name=”x5-page-mode” content="app">
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <link href="/static/res/favicon.png" rel="shortcut icon">
+    <link href="/static/res/apple-icon.png" rel="apple-touch-icon">
+    <link href="/static/css/animate.css" rel="stylesheet">
+
+</head>
+<style>
+    *{margin: 0;padding: 0}
+    html{height: 100%;width: 100%}
+    body{background-color: #ffffff;height: 100%;width: 100%}
+    .header{color: #f3ac2b;padding: 0;text-align: center;user-select: none;cursor: pointer;
+        -webkit-tap-highlight-color: transparent}
+    h2{font-size: 26px;padding: 20px 8px;background-color: #f7c873;color: #444444;text-align: left}
+    #v{background-color: red;color: white;padding: 2px 8px;border-radius: 5px;font-size: 18px}
+    a{text-decoration: none;color: #2176ff}
+    .video-list{max-width: 640px;margin: 0 auto;background-color: white;height: 100%;box-shadow: 0 0 10px 2px #aaaaaa}
+    .list{padding: 20px 30px;margin-top: 30px}
+    .list p {height: 32px;cursor: pointer;transition: 0.3s ease-out;font-size: 18px;user-select: none;-webkit-tap-highlight-color: transparent}
+    .list p:hover{font-size: 18px;transition: .3s ease}
+
+    @media (max-width: 500px) {
+        h2{font-size: 25px;padding: 20px 4px}
+        #v{font-size: 15px}
+        .list{padding: 20px 10px}
+    }
+</style>
+<body>
+<div class="video-list">
+    <div class="header animated fadeInDown">
+        <h2 onclick="window.location.pathname = '/'">Landers.&nbsp;<span id="v">VLOG</span></h2>
+    </div>
+    <div class="list">
+        {% for v in videos|reverse %}
+        <p class="animated slideInDown">👑<a style="margin-left: 5px;display: inline-block;width: calc(100% - 130px)" href="/videos?watch={{ v.name }}">{{ v.info }}</a>
+            <span style="width: 95px;display: inline-block;font-size: 14px">📆{{ v.date }}</span>
+        </p>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

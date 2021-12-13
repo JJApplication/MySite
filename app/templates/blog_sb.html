@@ -1,0 +1,55 @@
+{% extends './base/normal_base.html' %}
+{% block title %}我的博客{% endblock title %}
+{% block head %}
+    <meta name="theme-color" content="#495a80">
+    <link href="/static/css/blog.css" rel="stylesheet">
+    <link rel="preload" href="/static/res/font/qihei.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@10.1.2/styles/atom-one-light.min.css" integrity="sha256-12ZS4CZEzCi89uRJxSLaJELc0bbadXHaD+TChCgsVX4=" crossorigin="anonymous">
+    <link href="/static/css/font/qihei.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@10.1.2/highlight.min.js" integrity="sha256-ikRolu1t1QhoQdGe7+uYVRplqEjpYawkgFAlTWbnWPs=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+{% endblock head %}
+{% block style %}
+{% endblock style %}
+{% block body %}
+
+<div class="bloghead">
+    <p class="animated fadeInDown" style="display: inline-block;margin: 0 auto;margin-top: 65px;font-size: 40px;text-align: center;"><a href="/blog" style="color: white;text-decoration: none">随笔</a></p>
+    <p class="animated fadeInUp" style="display: block;margin: 0 auto;font-size: 1rem;color: white;text-align: center">用文字记录生活</p>
+
+    <div class="topnav animated fadeInDown"><a href="/">主页</a>&emsp;<a href="/about">关于</a></div>
+</div>
+    <div class="gap" style="margin-top: 30px"></div>
+    <div class="gap2" style="text-align: center;padding: 10px 0 20px 0">
+    <button class="btn-flat btn-sm" style="background:white;border: 1px solid #222222;color: #222222;outline: none" onclick="window.location.href='https://landers1037.github.io'">前往静态博客</button>
+    </div>
+    <div class="mobile-head">
+        <div class="container">
+
+            <div class="input-group">
+                <input type="text" id="search" placeholder="搜索文章..." autocomplete="off"><i class="home" onclick="window.location.href='/blog'"> 随笔</i>
+            </div>
+            <p class="nav"><a href="https://landers1037.github.io">Hexo博客</a><a href="/blog/sb">随笔</a><a href="/">主页</a><a href="/blog/post/declare/">声明</a></p>
+            <div class="suggestion-list hidden">
+            </div>
+
+    </div>
+    </div>
+    <div class="list-group">
+      {% for d in data %}
+    <div class="list-group-item animated fadeInDown" style="animation-delay: .2s;animation-duration: .9s">
+        <p class="text">{{ d.title }}</p><a href="/blog/post/{{ d.url }}" class="btn btn-sm">阅读</a>
+        <div class="blogpost">{{ d.content|md|safe }}</div>
+    </div>
+     {% endfor %}
+    </div>
+
+    <div class="footer">
+        <p style="margin: 0 auto;text-align: center;margin-top: 20px;margin-bottom: 5px;font-size: .9rem">版权所有©<a href="/" style="text-align: center;color:inherit;text-decoration: none;">Landers1037</a></p>
+        <p style="font-size: 0.7rem" class="text-center text-muted">基于Bootstrap4.3.0，使用Flask开发</p>
+    </div>
+
+<script>var all_apps = {{ se|tojson }};</script>
+<script src="/static/js/search.js" defer></script>
+{% endblock body %}
